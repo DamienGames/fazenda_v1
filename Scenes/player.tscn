@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://0uy77r75f33t"]
+
+[ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/player.gd" id="1_vgqql"]
+[ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/health_component.gd" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://boc7rp3yw7fxo" path="res://Scripts/progress_bar.gd" id="4_fkybt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(6.5, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3smsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}],
+"loop": true,
+"name": &"d_idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_vgqql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3smsa")
+animation = &"d_idle"
+autoplay = "d_idle"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_cvnsp")
+metadata/_custom_type_script = "uid://qaseusijo1hs"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+offset_left = -23.0
+offset_top = -34.0
+offset_right = 21.0
+offset_bottom = -7.0
+script = ExtResource("4_fkybt")
+
+[connection signal="healed" from="HealthComponent" to="ProgressBar" method="_on_health_component_healed"]
+[connection signal="health_changed" from="HealthComponent" to="ProgressBar" method="_on_health_component_health_changed"]
