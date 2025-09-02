@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://0uy77r75f33t"]
 
-[ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://tgsy325q5sw8" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/health_component.gd" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://boc7rp3yw7fxo" path="res://Scripts/progress_bar.gd" id="4_fkybt"]
@@ -47,7 +47,6 @@ script = ExtResource("2_cvnsp")
 metadata/_custom_type_script = "uid://qaseusijo1hs"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-anchors_preset = -1
 offset_left = -23.0
 offset_top = -34.0
 offset_right = 21.0
