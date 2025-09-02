@@ -1,0 +1,14 @@
+# --- Godot 4.x ---
+# Diretório de cache e importações (não versionar)
+.import/
+.godot/
+*.import
+
+# Configurações locais do editor (não necessárias no versionamento)
+.editor_settings-3.tres
+.editor_settings-4.tres
+.editor_settings.tres
+
+# Logs
+logs/
+*.log
