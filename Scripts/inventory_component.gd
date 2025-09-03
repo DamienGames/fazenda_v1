@@ -2,6 +2,7 @@ extends Node
 class_name InventoryComponent
 
 @export var item_database: ItemDatabase
+@export var effect_database: EffectDataBase
 
 var items: Array[Dictionary] = [] # [{id:String, quantity:int}]
 
@@ -53,6 +54,45 @@ func split_stack(slot_index: int, amount: int) -> void:
 		return
 	slot.quantity -= amount
 	items.append({"id": slot.id, "quantity": amount})
+
+func use_item(slot_index: int, player: Node) -> void:
+	if slot_index < 0 or slot_index >= items.size():
+		return
+
+	var slot = items[slot_index]
+	var item_info = item_database.get_item(slot.id)
+	if not item_info:
+		return
+
+	if item_info.has("effects"):
+		for effect in item_info.effects:
+			_apply_effect(player, effect)
+
+	# consumível diminui a quantidade
+	remove_item(slot.id, 1)
+
+func _apply_effect(player: Node, effect: Dictionary) -> void:
+	match effect.type:
+		effect_database.Type.HEAL:
+			match effect.target:
+				effect_database.Target.HP:
+					player.hp += effect.value
+				effect_database.Target.MP:
+					player.mp += effect.value
+		effect_database.Type.DAMAGE:
+				player.hp -= effect.value
+		effect_database.Type.BUFF:
+			apply_buff(player, effect.target, effect.value, effect.duration)
+
+func apply_buff(player: Node, target: int, value: int, duration: float) -> void:
+	match target:
+		effect_database.Target.ATTACK:
+			player.attack += value
+			# aqui você pode iniciar um Timer para remover o buff depois
+		effect_database.Target.DEFENSE:
+			player.defense += value
+
+
 
 # --- CONSULTA ---
 func has_item(id: String, quantity: int = 1) -> bool:

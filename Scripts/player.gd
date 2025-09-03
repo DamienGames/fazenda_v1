@@ -4,11 +4,11 @@ const JUMP_VELOCITY = -400.0
 
 signal pick(id:String, amount:int)
 signal drop(id:String, amount:int)
-
+		 
 func _ready() -> void:
 	pick.emit("item_0002",13)
 	await get_tree().create_timer(2.0).timeout
-	pick.emit("item_0002",13)
+	pick.emit("item_0002",12)
 	await get_tree().create_timer(2.0).timeout
 	drop.emit("item_0002",10)
 	pick.emit("item_0001",5)

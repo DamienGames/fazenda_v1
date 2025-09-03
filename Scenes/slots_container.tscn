@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ceyx0wcxrc283"]
 
-[ext_resource type="Texture2D" uid="uid://xga20ft86uv" path="res://Icons/sword.png" id="1_k5gp2"]
+[ext_resource type="Texture2D" uid="uid://nh4tjkscecvy" path="res://Art/Icons/sword.png" id="1_k5gp2"]
 [ext_resource type="Script" uid="uid://dw6exlr2ea6sv" path="res://Scripts/inventory_slot.gd" id="1_yxepq"]
 [ext_resource type="Script" uid="uid://c3mshx4hcjvsv" path="res://Scripts/Resources/item_database.gd" id="2_xefrf"]
-[ext_resource type="Texture2D" uid="uid://dgth7sxoj3w4q" path="res://Icons/potion.png" id="2_yxepq"]
+[ext_resource type="Texture2D" uid="uid://buuwvtdw565ti" path="res://Art/Icons/potion.png" id="2_yxepq"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k5gp2"]
 
@@ -35,7 +35,7 @@ offset_left = 163.0
 offset_top = 446.0
 offset_right = 203.0
 offset_bottom = 469.0
-scale = Vector2(6.587186, 6.587186)
+scale = Vector2(6.58719, 6.58719)
 text = "1	"
 
 [node name="Slot2" type="Control" parent="."]
@@ -56,9 +56,9 @@ texture = ExtResource("2_yxepq")
 
 [node name="Quantity" type="Label" parent="Slot2"]
 layout_mode = 0
-offset_left = 839.99994
+offset_left = 840.0
 offset_top = 469.0
-offset_right = 879.99994
+offset_right = 880.0
 offset_bottom = 492.0
-scale = Vector2(6.587186, 6.587186)
+scale = Vector2(6.58719, 6.58719)
 text = "1	"

@@ -9,7 +9,6 @@
 [node name="Main" type="Node2D"]
 
 [node name="InventoryUI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 45.0
@@ -26,8 +25,7 @@ item_database = ExtResource("3_8gbba")
 
 [node name="SlotsContainer" parent="InventoryUI" instance=ExtResource("5_kry3j")]
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_bo1nx")]
-visible = false
+[node name="Player" parent="." instance=ExtResource("1_bo1nx")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
