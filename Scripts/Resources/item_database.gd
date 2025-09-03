@@ -1,20 +1,23 @@
-extends Node
+extends Resource
 class_name ItemDatabase
 
 var items: Dictionary = {
-	"sword": {
+	"item_0001": {
+		"type": "weapon",
 		"name": "Espada de Ferro",
 		"max_stack": 1,
 		"icon": preload("res://Icons/sword.png"),
-		"type": "weapon"
 	},
-	"potion": {
+	"item_0002": {
+		"type": "consumable",
 		"name": "Poção de Cura",
-		"max_stack": 10,
+		"max_stack": 99,
 		"icon": preload("res://Icons/potion.png"),
-		"type": "consumable"
 	}
 }
 
-static func get_item(id: String) -> Dictionary:
-	return items.get(id)
+func get_item(id: String) -> Dictionary:
+	if items.has(id):
+		return items.get(id)
+	return {}
+	

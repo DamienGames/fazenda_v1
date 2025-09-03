@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceyx0wcxrc283"]
+
+[ext_resource type="Texture2D" uid="uid://xga20ft86uv" path="res://Icons/sword.png" id="1_k5gp2"]
+[ext_resource type="Script" uid="uid://dw6exlr2ea6sv" path="res://Scripts/inventory_slot.gd" id="1_yxepq"]
+[ext_resource type="Script" uid="uid://c3mshx4hcjvsv" path="res://Scripts/Resources/item_database.gd" id="2_xefrf"]
+[ext_resource type="Texture2D" uid="uid://dgth7sxoj3w4q" path="res://Icons/potion.png" id="2_yxepq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k5gp2"]
+
+[sub_resource type="Resource" id="Resource_xefrf"]
+script = ExtResource("2_xefrf")
+metadata/_custom_type_script = "uid://c3mshx4hcjvsv"
+
+[node name="SlotsContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Slot" type="Control" parent="."]
+material = SubResource("CanvasItemMaterial_k5gp2")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yxepq")
+item_database = SubResource("Resource_xefrf")
+
+[node name="Icon" type="TextureRect" parent="Slot"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("1_k5gp2")
+
+[node name="Quantity" type="Label" parent="Slot"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 446.0
+offset_right = 203.0
+offset_bottom = 469.0
+scale = Vector2(6.587186, 6.587186)
+text = "1	"
+
+[node name="Slot2" type="Control" parent="."]
+material = SubResource("CanvasItemMaterial_k5gp2")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yxepq")
+item_database = SubResource("Resource_xefrf")
+
+[node name="Icon" type="TextureRect" parent="Slot2"]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 34.0
+offset_right = 1137.0
+offset_bottom = 546.0
+texture = ExtResource("2_yxepq")
+
+[node name="Quantity" type="Label" parent="Slot2"]
+layout_mode = 0
+offset_left = 839.99994
+offset_top = 469.0
+offset_right = 879.99994
+offset_bottom = 492.0
+scale = Vector2(6.587186, 6.587186)
+text = "1	"

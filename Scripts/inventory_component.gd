@@ -1,11 +1,13 @@
 extends Node
 class_name InventoryComponent
 
+@export var item_database: ItemDatabase
+
 var items: Array[Dictionary] = [] # [{id:String, quantity:int}]
 
-# --- Adicionar item respeitando stack ---
+# --- ADICIONAR ITEM RESPEITANDO STACK ---
 func add_item(id: String, quantity: int = 1) -> void:
-	var item_info = ItemDatabase.get_item(id)
+	var item_info = item_database.get_item(id)
 	if not item_info:
 		return
 
@@ -19,16 +21,16 @@ func add_item(id: String, quantity: int = 1) -> void:
 	if quantity > 0:
 		items.append({"id": id, "quantity": quantity})
 
-# --- Remover item ---
-func remove_item(id: String, quantity: int = 1) -> void:
+# --- REMOVER ITEM ---
+func remove_item(id: String, amount: int = 1) -> void:
 	for i in items:
 		if i.id == id:
-			i.quantity -= quantity
+			i.quantity = i.quantity - amount
 			if i.quantity <= 0:
 				items.erase(i)
 			return
 
-# --- Mover / trocar itens ---
+# --- MOVER / TROCAR ITENS ---
 func move_item(from_index: int, to_index: int) -> void:
 	if from_index < 0 or from_index >= items.size():
 		return
@@ -42,7 +44,7 @@ func swap_items(index_a: int, index_b: int) -> void:
 		items[index_a] = items[index_b]
 		items[index_b] = temp
 
-# --- Dividir stack ---
+# --- DIVIDIR STACK ---
 func split_stack(slot_index: int, amount: int) -> void:
 	if slot_index >= items.size():
 		return
@@ -52,7 +54,7 @@ func split_stack(slot_index: int, amount: int) -> void:
 	slot.quantity -= amount
 	items.append({"id": slot.id, "quantity": amount})
 
-# --- Consulta ---
+# --- CONSULTA ---
 func has_item(id: String, quantity: int = 1) -> bool:
 	return get_quantity(id) >= quantity
 
@@ -76,3 +78,6 @@ func compact() -> void:
 		if not added:
 			compacted.append(i.duplicate())
 	items = compacted
+
+func get_all_items():
+	return items

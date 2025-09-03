@@ -1,15 +1,18 @@
 extends CharacterBody2D
-
-@onready var health_component: HealthComponent = $HealthComponent
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+signal pick(id:String, amount:int)
+signal drop(id:String, amount:int)
+
 func _ready() -> void:
-	health_component.damage(99)
+	pick.emit("item_0002",13)
 	await get_tree().create_timer(2.0).timeout
-	health_component.heal(22)
+	pick.emit("item_0002",13)
 	await get_tree().create_timer(2.0).timeout
-	health_component.restore_full()
+	drop.emit("item_0002",10)
+	pick.emit("item_0001",5)
+	pass
 
 func _physics_process(delta: float) -> void:	
 	var direction := Input.get_axis("ui_left", "ui_right")

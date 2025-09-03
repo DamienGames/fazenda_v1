@@ -8,28 +8,19 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="InventoryUI" type="Control" parent="."]
-layout_mode = 3
-offset_left = 45.000004
-offset_top = 29.0
-offset_right = 85.0
-offset_bottom = 69.0
-scale = Vector2(0.03225229, 0.029899416)
-script = ExtResource("4_jjvhh")
-
-[node name="SlotsContainer" parent="InventoryUI" instance=ExtResource("5_kry3j")]
-layout_mode = 1
-
-[node name="InventoryComponent" parent="InventoryUI" instance=ExtResource("2_8gbba")]
-position = Vector2(-1395.25, -969.9186)
-scale = Vector2(31.005552, 33.44547)
-item_database = ExtResource("3_8gbba")
-
 [node name="Player" parent="." instance=ExtResource("1_bo1nx")]
 position = Vector2(62, 38)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 
-[connection signal="drop" from="Player" to="InventoryUI" method="_on_player_drop"]
-[connection signal="pick" from="Player" to="InventoryUI" method="_on_player_pick"]
+[node name="InventoryComponent" parent="." instance=ExtResource("2_8gbba")]
+item_database = ExtResource("3_8gbba")
+
+[node name="InventoryUI" type="Control" parent="."]
+layout_mode = 3
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_jjvhh")
+
+[node name="SlotsContainer" parent="." instance=ExtResource("5_kry3j")]
