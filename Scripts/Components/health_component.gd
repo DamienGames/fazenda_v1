@@ -1,6 +1,6 @@
-@icon("res://icons/heart.svg")
-class_name HealthComponent
+@icon("res://Art/Icons/heart.svg")
 extends  Node
+class_name HealthComponent
 
 #EXPORT VARS
 #LIMITE MAXIMO DE HP
@@ -31,7 +31,7 @@ func _ready() -> void:
 	emit_signal("health_changed", current_health, max_health)
 
 #APLICA DANO AO HP ATUAL
-func damage(amount: int) -> void:
+func take_damage(amount: int) -> void:
 	amount = max(amount, 0)
 	if amount <= 0 or current_health <= 0:
 		return

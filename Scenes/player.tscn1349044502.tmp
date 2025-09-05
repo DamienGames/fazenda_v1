@@ -1,34 +1,15 @@
-[gd_scene load_steps=29 format=3 uid="uid://0uy77r75f33t"]
+[gd_scene load_steps=19 format=3 uid="uid://0uy77r75f33t"]
 
 [ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://e32e1hn0u3wd" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
 [ext_resource type="Texture2D" uid="uid://bqikru26egmx0" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
 [ext_resource type="Script" uid="uid://boc7rp3yw7fxo" path="res://Scripts/progress_bar.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://cijlswxul4ikv" path="res://Art/Sprites/life_bar_under.png" id="6_qqcod"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="6_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://s2o1ywe5hm07" path="res://Art/Sprites/life_bar_over.png" id="7_igrcy"]
-[ext_resource type="Texture2D" uid="uid://b0k5d47dbi3oi" path="res://Art/Sprites/life_bar.png" id="8_fs7ks"]
 [ext_resource type="Script" uid="uid://baet3vku6dou8" path="res://Scripts/Components/progression_component.gd" id="9_f1ek2"]
-[ext_resource type="Script" uid="uid://dnjb32a4h35mu" path="res://Scripts/StateMachine/state_machine.gd" id="11_pu2lt"]
-[ext_resource type="Script" uid="uid://diq5xguhper2y" path="res://Scripts/StateMachine/Player/state_idle.gd" id="12_ukyrk"]
-[ext_resource type="Script" uid="uid://br1hin6b1coeu" path="res://Scripts/StateMachine/Player/state_walk.gd" id="13_7dp3o"]
-[ext_resource type="Script" uid="uid://bhfxpb417a3v8" path="res://Scripts/StateMachine/Player/state_attack.gd" id="14_h4iuc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
-atlas = ExtResource("2_h4iuc")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
-atlas = ExtResource("2_h4iuc")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
-atlas = ExtResource("2_h4iuc")
-region = Rect2(48, 0, 24, 24)
+[ext_resource type="Script" uid="uid://p25pksrfle5a" path="res://Scripts/Components/sprite_animation_component.gd" id="10_tx1dd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
 atlas = ExtResource("1_cvnsp")
@@ -50,20 +31,6 @@ region = Rect2(0, 0, 8, 8)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fd4e3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qqcod")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_igrcy")
-}],
-"loop": false,
-"name": &"d_attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fkybt")
 }, {
 "duration": 1.0,
@@ -77,15 +44,15 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tx1dd")
 }],
-"loop": false,
+"loop": true,
 "name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.3,
 "texture": SubResource("AtlasTexture_gymyn")
 }],
-"loop": false,
+"loop": true,
 "name": &"hurt",
 "speed": 5.0
 }]
@@ -107,24 +74,13 @@ script = ExtResource("1_vgqql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"d_attack"
+animation = &"hurt"
+autoplay = "d_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 3)
 scale = Vector2(0.9956213, 1)
 shape = SubResource("RectangleShape2D_vgqql")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CollisionShape2D"]
-anchors_preset = -1
-offset_left = 10.04398
-offset_top = -1.0
-offset_right = 50.04398
-offset_bottom = 39.0
-value = 100.0
-texture_under = ExtResource("6_qqcod")
-texture_over = ExtResource("7_igrcy")
-texture_progress = ExtResource("8_fs7ks")
-tint_under = Color(0.40784314, 1, 1, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = -1
@@ -133,13 +89,6 @@ offset_top = -34.0
 offset_right = 21.0
 offset_bottom = -7.0
 script = ExtResource("4_fkybt")
-
-[node name="StateLabel" type="Label" parent="ProgressBar"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 32.0
-offset_right = 74.0
-offset_bottom = 55.0
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_cvnsp")
@@ -172,21 +121,12 @@ debug_color = Color(0.8889723, 0.20278314, 0.286536, 0.41960785)
 script = ExtResource("9_f1ek2")
 metadata/_custom_type_script = "uid://baet3vku6dou8"
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("11_pu2lt")
-metadata/_custom_type_script = "uid://dnjb32a4h35mu"
-
-[node name="StateIdle" type="Node" parent="StateMachine"]
-script = ExtResource("12_ukyrk")
-
-[node name="StateWalk" type="Node" parent="StateMachine"]
-script = ExtResource("13_7dp3o")
-
-[node name="StateAttack" type="Node" parent="StateMachine"]
-script = ExtResource("14_h4iuc")
+[node name="SpriteAnimationComponent" type="Node" parent="."]
+script = ExtResource("10_tx1dd")
+sprite_path = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://p25pksrfle5a"
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="healed" from="HealthComponent" to="ProgressBar" method="_on_health_component_healed"]
 [connection signal="health_changed" from="HealthComponent" to="ProgressBar" method="_on_health_component_health_changed"]
 [connection signal="hurt" from="HurtboxComponent" to="." method="_on_hurtbox_component_hurt"]
-[connection signal="state_changed" from="StateMachine" to="." method="_on_state_machine_state_changed"]
