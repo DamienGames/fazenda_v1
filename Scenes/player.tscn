@@ -1,17 +1,18 @@
-[gd_scene load_steps=29 format=3 uid="uid://0uy77r75f33t"]
+[gd_scene load_steps=34 format=3 uid="uid://0uy77r75f33t"]
 
-[ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://tgsy325q5sw8" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://e32e1hn0u3wd" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
-[ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
-[ext_resource type="Texture2D" uid="uid://bqikru26egmx0" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://dp0btqctptkqu" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://bgdkan0sehr5j" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
+[ext_resource type="Texture2D" uid="uid://dhags07ahrjuq" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
 [ext_resource type="Script" uid="uid://boc7rp3yw7fxo" path="res://Scripts/progress_bar.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://cijlswxul4ikv" path="res://Art/Sprites/life_bar_under.png" id="6_qqcod"]
+[ext_resource type="Texture2D" uid="uid://cy7mg1wcbp88g" path="res://Art/Sprites/2 Standart/1 Character/D_Run.png" id="6_igrcy"]
+[ext_resource type="Texture2D" uid="uid://t4uayp3jxqee" path="res://Art/Sprites/life_bar_under.png" id="6_qqcod"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="6_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://s2o1ywe5hm07" path="res://Art/Sprites/life_bar_over.png" id="7_igrcy"]
-[ext_resource type="Texture2D" uid="uid://b0k5d47dbi3oi" path="res://Art/Sprites/life_bar.png" id="8_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://drgtpxervm7ep" path="res://Art/Sprites/life_bar_over.png" id="7_igrcy"]
+[ext_resource type="Texture2D" uid="uid://djh8nruvtafti" path="res://Art/Sprites/life_bar.png" id="8_fs7ks"]
 [ext_resource type="Script" uid="uid://baet3vku6dou8" path="res://Scripts/Components/progression_component.gd" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://dnjb32a4h35mu" path="res://Scripts/StateMachine/state_machine.gd" id="11_pu2lt"]
 [ext_resource type="Script" uid="uid://diq5xguhper2y" path="res://Scripts/StateMachine/Player/state_idle.gd" id="12_ukyrk"]
@@ -45,6 +46,22 @@ region = Rect2(0, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
 atlas = ExtResource("4_f1ek2")
 region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
+atlas = ExtResource("6_igrcy")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
+atlas = ExtResource("6_igrcy")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olqyp"]
+atlas = ExtResource("6_igrcy")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjfl"]
+atlas = ExtResource("6_igrcy")
+region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3smsa"]
 animations = [{
@@ -88,6 +105,23 @@ animations = [{
 "loop": false,
 "name": &"hurt",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6n3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpjfl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
@@ -101,33 +135,31 @@ height = 8.0
 radius = 3.0
 height = 6.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player", "saveable"]]
 collision_mask = 5
 script = ExtResource("1_vgqql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"d_attack"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 3)
-scale = Vector2(0.9956213, 1)
+scale = Vector2(0.995621, 1)
 shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CollisionShape2D"]
-anchors_preset = -1
-offset_left = 10.04398
+offset_left = 10.044
 offset_top = -1.0
-offset_right = 50.04398
+offset_right = 50.044
 offset_bottom = 39.0
-value = 100.0
+value = 2.0
 texture_under = ExtResource("6_qqcod")
 texture_over = ExtResource("7_igrcy")
 texture_progress = ExtResource("8_fs7ks")
-tint_under = Color(0.40784314, 1, 1, 1)
+tint_under = Color(0.407843, 1, 1, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-anchors_preset = -1
 offset_left = -23.0
 offset_top = -34.0
 offset_right = 21.0
@@ -154,7 +186,7 @@ metadata/_custom_type_script = "uid://c0nbllp12uxu5"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_x3wgy")
-debug_color = Color(0.85613966, 0.56241035, 0.12128361, 0.41960785)
+debug_color = Color(0.85614, 0.56241, 0.121284, 0.419608)
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 collision_layer = 2
@@ -166,7 +198,7 @@ metadata/_custom_type_script = "uid://d3od1ryb8hjmm"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_3smsa")
-debug_color = Color(0.8889723, 0.20278314, 0.286536, 0.41960785)
+debug_color = Color(0.888972, 0.202783, 0.286536, 0.419608)
 
 [node name="ProgressionComponent" type="Node" parent="."]
 script = ExtResource("9_f1ek2")
@@ -184,6 +216,9 @@ script = ExtResource("13_7dp3o")
 
 [node name="StateAttack" type="Node" parent="StateMachine"]
 script = ExtResource("14_h4iuc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="healed" from="HealthComponent" to="ProgressBar" method="_on_health_component_healed"]

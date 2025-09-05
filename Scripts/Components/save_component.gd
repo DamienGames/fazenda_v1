@@ -1,8 +1,6 @@
 extends Node
 class_name GameSaveManager
 
-@export var save_file_name: String = "savegame.json"
-
 var save_data: Dictionary = {
 	"player": {},
 	"scenes": {},
@@ -10,7 +8,6 @@ var save_data: Dictionary = {
 }
 
 var current_scene_path: String = ""
-
 
 # 🔹 Registrar atores (NPCs, inimigos, objetos interativos)
 func register_actor(id: String, node: Node) -> void:
@@ -20,8 +17,7 @@ func register_actor(id: String, node: Node) -> void:
 
 # 🔹 Salvar estado da cena atual
 func save_current_scene() -> void:
-	if current_scene_path == "":
-		return
+	current_scene_path = get_tree().current_scene.scene_file_path
 	
 	var scene_data: Dictionary = {
 		"npcs": {},
@@ -110,6 +106,7 @@ func apply_player(player: Node) -> void:
 		return
 	var p = save_data["player"]
 	#player.health = p.get("health", player.health)
+	print(p.get("position", player.position))
 	player.position = p.get("position", player.position)
 	#player.xp_component.current_xp = p.get("xp", 0)
 	#player.xp_component.level = p.get("level", 1)
@@ -119,8 +116,8 @@ func apply_player(player: Node) -> void:
 func save_globals() -> void:
 	save_data["globals"] = {
 		"gold": GlobalData.gold,
-		"quests": GlobalData.quests,
-		"flags": GlobalData.flags
+		#"quests": GlobalData.quests,
+		#"flags": GlobalData.flags
 	}
 
 
@@ -128,8 +125,8 @@ func save_globals() -> void:
 func apply_globals() -> void:
 	if "globals" in save_data:
 		GlobalData.gold = save_data["globals"].get("gold", 0)
-		GlobalData.quests = save_data["globals"].get("quests", {})
-		GlobalData.flags = save_data["globals"].get("flags", {})
+		#GlobalData.quests = save_data["globals"].get("quests", {})
+		#GlobalData.flags = save_data["globals"].get("flags", {})
 
 
 # 🔹 Trocar de cena mantendo estado
@@ -181,7 +178,6 @@ func load_game() -> void:
 		if typeof(data) == TYPE_DICTIONARY:
 			save_data = data
 			apply_globals()
-			
 			# Trocar cena para a última salva
 			if save_data["scenes"].keys().size() > 0:
 				var last_scene = save_data["scenes"].keys()[0]

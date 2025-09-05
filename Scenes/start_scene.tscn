@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsi3rogo5hhab"]
+
+[ext_resource type="Texture2D" uid="uid://do2l0bf3ttvo5" path="res://icon.svg" id="1_aeweq"]
+[ext_resource type="Script" uid="uid://doa742yrgf0m8" path="res://Scripts/button.gd" id="2_8turk"]
+
+[node name="StartScene" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "LOAD GAME
+"
+icon = ExtResource("1_aeweq")
+script = ExtResource("2_8turk")

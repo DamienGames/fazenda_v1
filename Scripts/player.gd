@@ -27,12 +27,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("save_game"):
-		GameSave.save_game()
-
-	if event.is_action_pressed("load_game"):
-		GameSave.load_game()
 
 func _on_hurtbox_component_hurt(damage: int, from: Node) -> void:
 	animated_sprite_2d.play("hurt")
@@ -42,3 +36,7 @@ func _on_state_machine_state_changed(new_state: String) -> void:
 	
 func set_data(data: Dictionary) -> void:
 	print("Dados recebidos: ", data)
+
+func _load_state(data: Dictionary) -> void:
+	if data.has("position"):
+		global_position = data["position"]

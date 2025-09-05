@@ -11,20 +11,25 @@ config_version=5
 [application]
 
 config/name="fazenda 1 8px"
-run/main_scene="uid://7tw63fwknjm1"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://6yn3wovv18cy"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SceneComponentGlobal="*res://Scripts/Components/scene_component.gd"
-GameSave="*res://Scripts/Globals/game_save_manager.gd"
 GlobalData="*res://Scripts/Globals/global_data.gd"
+SaveGlobal="*res://Scripts/Components/save_component.gd"
+SaveComponent2="*res://Scripts/Components/save_component2.gd"
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[global_group]
+
+saveable=""
 
 [input]
 
