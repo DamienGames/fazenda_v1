@@ -1,20 +1,47 @@
-extends Node2D
-@onready var scene_component: SceneComponent = $SceneComponent
-@onready var area_2d: Area2D = $Area2D
+extends Node
 
+@onready var save_load = SaveLoadComponent.new()
+@export var current_scene: Node = null	
+@export_file("*.tscn") var initial_scene_path: String
 
-func _ready() -> void:
-	SaveGlobal.on_scene_ready()
-	await get_tree().create_timer(2.0).timeout
-	#scene_component.change_scene("res://Scenes/Fases/scene_2.tscn", { "1": "2"})
+func _ready() -> void:	
+	change_scene(initial_scene_path)
+
+func change_scene(path: String) -> void:
+	if current_scene:
+		current_scene.queue_free()
+	var scene = load(path).instantiate()
+	$CurrentSceneHolder.add_child(scene)
+	current_scene = scene
+
+# 🔹 Salvar jogo
+func save_game(slot: int = 1):
+	var player = current_scene.get_node("Player") # ajuste conforme sua cena
+	save_load.save_game(player, current_scene.scene_file_path, slot)
+
+# 🔹 Carregar jogo
+func load_game(slot: int = 1):
+	var data = save_load.load_game(slot)
+	if data.is_empty(): return
+
+	# Troca cena
+	change_scene(data["scene_path"])
+
+	await get_tree().process_frame  # espera 1 frame pra cena instanciar
+
+	# Restaura Player
+	var player = current_scene.get_node("Player")
+	player._load_state(data["player"])
+
+	# Restaura globais
+	GlobalData.gold = data["globals"]["gold"]
+	GlobalData.xp = data["globals"]["xp"]
+	GlobalData.quests = data["globals"]["quests"]
+	GlobalData.flags = data["globals"]["flags"]
+	GlobalData.achievements = data["globals"]["achievements"]
+
+func _on_save_pressed() -> void:
+	save_game(1)
 	
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		scene_component.change_scene("res://Scenes/Fases/scene_2.tscn", { "1": "2"})
-		
-func _input(event: InputEvent) -> void:
-	if 	event.is_action_pressed("save_game"):
-		SaveComponent2.save_game(1)
-	if 	event.is_action_pressed("load_game"):
-		SaveComponent2.load_game(1)
+func _on_load_pressed() -> void:
+	load_game(1)

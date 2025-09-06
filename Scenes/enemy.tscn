@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk3t1o176qtku"]
+[gd_scene load_steps=13 format=3 uid="uid://dk3t1o176qtku"]
 
-[ext_resource type="Texture2D" uid="uid://be3etkdnpj08o" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://bfgkg47wslnai" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://0u5xqwun7do8" path="res://Scripts/enemy.gd" id="1_0830c"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_287tu"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="3_287tu"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="4_0830c"]
+[ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/progress_bar.gd" id="6_ghaa6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
 atlas = ExtResource("1_1f0kj")
@@ -55,10 +56,12 @@ scale = Vector2(0.938262, 0.790008)
 shape = SubResource("RectangleShape2D_ghaa6")
 
 [node name="HealthComponent" type="Node2D" parent="."]
+visible = false
 script = ExtResource("2_287tu")
 metadata/_custom_type_script = "uid://qaseusijo1hs"
 
 [node name="HitboxComponent" type="Area2D" parent="." groups=["hostile"]]
+position = Vector2(0, -3)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_287tu")
@@ -70,9 +73,11 @@ shape = SubResource("CapsuleShape2D_287tu")
 debug_color = Color(0.856022, 0.597914, 0.126976, 0.419608)
 
 [node name="HurtboxComponent" type="Area2D" parent="." groups=["hostile"]]
+visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_0830c")
+health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://d3od1ryb8hjmm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -80,3 +85,14 @@ position = Vector2(0, 1)
 scale = Vector2(0.898449, 0.872154)
 shape = SubResource("CapsuleShape2D_0830c")
 debug_color = Color(0.824288, 0.115722, 0.272508, 0.419608)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+offset_right = 4.0
+offset_bottom = 27.0
+value = 100.0
+script = ExtResource("6_ghaa6")
+
+[connection signal="damaged" from="HealthComponent" to="ProgressBar" method="_on_health_component_damaged"]
+[connection signal="healed" from="HealthComponent" to="ProgressBar" method="_on_health_component_healed"]
+[connection signal="health_changed" from="HealthComponent" to="ProgressBar" method="_on_health_component_health_changed"]

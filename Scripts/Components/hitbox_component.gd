@@ -2,8 +2,9 @@
 extends Area2D
 class_name HitboxComponent
 
-@export var damage: int = 10
+@export var damage: int = 50
 @export var knockback_force: float = 200.0
+@onready var collision_shape: CollisionShape2D = find_child("CollisionShape2D", true, false)
 
 signal hit(target)
 
@@ -30,3 +31,6 @@ func _share_group(groups_a: Array, groups_b: Array) -> bool:
 		if g in groups_b:
 			return true
 	return false
+
+func _enable_collision(collide: bool):
+	collision_shape.disabled = collide;

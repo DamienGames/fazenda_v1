@@ -23,7 +23,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if is_invincible:
 		emit_signal("blocked", area)
 		return
-
 	if area is HitboxComponent:
 		take_hit(area.damage, area)
 

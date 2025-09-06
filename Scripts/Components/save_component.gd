@@ -99,7 +99,6 @@ func save_player(player: Node) -> void:
 		#"level": player.xp_component.level
 	}
 
-
 # 🔹 Restaurar Player
 func apply_player(player: Node) -> void:
 	if not save_data.has("player"):
@@ -136,7 +135,8 @@ func change_scene(path: String) -> void:
 	
 	# 2. trocar cena
 	current_scene_path = path
-	get_tree().change_scene_to_file(path)
+	var main = get_tree().root.get_node("Main") # garante referência ao Main
+	main.change_scene(path)
 
 
 # 🔹 Chamado no _ready de cada cena carregada
@@ -159,8 +159,11 @@ func save_game() -> void:
 	save_globals()
 	
 	var file = FileAccess.open("user://savegame.dat", FileAccess.WRITE)
+	var file2 = FileAccess.open("user://savegame.json", FileAccess.WRITE)
+
 	if file:
 		file.store_var(save_data)  # salva o Dictionary como binário
+		file2.store_var(save_data)  # salva o Dictionary como binário
 		file.close()
 		print("💾 Jogo salvo:", save_data)
 
@@ -172,7 +175,7 @@ func load_game() -> void:
 	
 	var file = FileAccess.open("user://savegame.dat", FileAccess.READ)
 	if file:
-		var data = file.get_var()  # ❌ ler como binário, não usar get_as_text()
+		var data = file.get_var() 
 		file.close()
 		
 		if typeof(data) == TYPE_DICTIONARY:

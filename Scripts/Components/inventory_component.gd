@@ -94,8 +94,6 @@ func apply_buff(player: Node, target: int, value: int, duration: float) -> void:
 		effect_database.Target.DEFENSE:
 			player.defense += value
 
-
-
 # --- CONSULTA ---
 func has_item(id: String, quantity: int = 1) -> bool:
 	return get_quantity(id) >= quantity
