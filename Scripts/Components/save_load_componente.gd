@@ -49,6 +49,8 @@ func load_game(slot: int = 1) -> Dictionary:
 		return {}
 
 	var file = FileAccess.open_encrypted_with_pass(file_path, FileAccess.READ, encryption_password)
-	var save_data: Dictionary = file.get_var()
-	file.close()
-	return save_data
+	if  file :
+		var save_data: Dictionary = file.get_var()
+		file.close()
+		return save_data
+	return {}

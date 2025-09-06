@@ -1,14 +1,14 @@
 [gd_scene load_steps=33 format=3 uid="uid://0uy77r75f33t"]
 
-[ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://tgsy325q5sw8" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://e32e1hn0u3wd" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
-[ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
-[ext_resource type="Texture2D" uid="uid://bqikru26egmx0" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
-[ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/progress_bar.gd" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://dp0btqctptkqu" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://bgdkan0sehr5j" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
+[ext_resource type="Texture2D" uid="uid://dhags07ahrjuq" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
+[ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/UI/progress_bar.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://bgsvx2ksa7w37" path="res://Art/Sprites/2 Standart/1 Character/D_Run.png" id="6_igrcy"]
+[ext_resource type="Texture2D" uid="uid://cy7mg1wcbp88g" path="res://Art/Sprites/2 Standart/1 Character/D_Run.png" id="6_igrcy"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://baet3vku6dou8" path="res://Scripts/Components/progression_component.gd" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://dnjb32a4h35mu" path="res://Scripts/StateMachine/state_machine.gd" id="11_pu2lt"]
@@ -184,7 +184,7 @@ metadata/_custom_type_script = "uid://qaseusijo1hs"
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 position = Vector2(0, 5)
-scale = Vector2(0.22955637, 0.17953026)
+scale = Vector2(0.229556, 0.17953)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("5_fkybt")

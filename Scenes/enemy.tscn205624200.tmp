@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk3t1o176qtku"]
+[gd_scene load_steps=13 format=3 uid="uid://dk3t1o176qtku"]
 
 [ext_resource type="Texture2D" uid="uid://be3etkdnpj08o" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://0u5xqwun7do8" path="res://Scripts/enemy.gd" id="1_0830c"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="3_287tu"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="4_0830c"]
 [ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/UI/progress_bar.gd" id="6_ghaa6"]
-[ext_resource type="Script" uid="uid://kgqp2ogketdo" path="res://Scripts/Components/detection_componente.gd" id="7_1dp5w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
 atlas = ExtResource("1_1f0kj")
@@ -41,12 +40,8 @@ height = 8.0
 radius = 4.0
 height = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
-radius = 37.2156
-
 [node name="Enemy" type="CharacterBody2D" groups=["hostile", "saveable"]]
 collision_mask = 3
-slide_on_ceiling = false
 script = ExtResource("1_0830c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -97,25 +92,6 @@ value = 100.0
 script = ExtResource("6_ghaa6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-debug_enabled = true
-debug_use_custom = true
-debug_path_custom_color = Color(1, 0.360784, 1, 1)
-
-[node name="DetectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("detection_area", "raycast")]
-script = ExtResource("7_1dp5w")
-detection_area = NodePath("Area2D")
-raycast = NodePath("RayCast2D")
-
-[node name="Area2D" type="Area2D" parent="DetectionComponent"]
-scale = Vector2(2.54423, 2.22235)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent/Area2D"]
-shape = SubResource("CircleShape2D_auwsv")
-debug_color = Color(0.0664663, 0.533889, 0.199334, 0.419608)
-
-[node name="RayCast2D" type="RayCast2D" parent="DetectionComponent"]
-target_position = Vector2(0, 88)
 
 [connection signal="damaged" from="HealthComponent" to="ProgressBar" method="_on_health_component_damaged"]
 [connection signal="healed" from="HealthComponent" to="ProgressBar" method="_on_health_component_healed"]

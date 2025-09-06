@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://byb5oq8ear5sv" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://bimbt70uf6mf2" path="res://Scripts/Components/scene_component.gd" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://w3tc0mjmu7oa" path="res://Scenes/debug.gd" id="3_jjvhh"]
-[ext_resource type="FontFile" uid="uid://nm06t5ou2mam" path="res://UI/arial.ttf" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://w3tc0mjmu7oa" path="res://Scripts/UI/debug.gd" id="3_jjvhh"]
+[ext_resource type="FontFile" uid="uid://byey2nx6trh4i" path="res://UI/arial.ttf" id="4_jjvhh"]
 
 [sub_resource type="FontVariation" id="FontVariation_jjvhh"]
 base_font = ExtResource("4_jjvhh")
@@ -21,7 +21,6 @@ metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="save" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
 offset_left = 168.0
 offset_top = 18.0
 offset_right = 215.0
@@ -29,7 +28,6 @@ offset_bottom = 49.0
 text = "SAVE"
 
 [node name="load" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
 offset_left = 84.0
 offset_top = 15.0
 offset_right = 140.0
@@ -42,10 +40,9 @@ transform = Transform2D(0.1, 0, 0, 0.1, 0, 0)
 script = ExtResource("3_jjvhh")
 
 [node name="Panel" type="Panel" parent="DEBUG"]
-anchors_preset = -1
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(6.902076, 10.069132)
+scale = Vector2(6.90208, 10.0691)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DEBUG/Panel"]
 layout_mode = 0
