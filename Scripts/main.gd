@@ -3,6 +3,8 @@ extends Node
 @onready var save_load = SaveLoadComponent.new()
 @export var current_scene: Node = null	
 @export_file("*.tscn") var initial_scene_path: String
+@onready var scene_component: SceneComponent = $SceneComponent
+@onready var scene_container: Node2D = $SceneContainer
 
 func _ready() -> void:	
 	change_scene(initial_scene_path)
@@ -11,7 +13,7 @@ func change_scene(path: String) -> void:
 	if current_scene:
 		current_scene.queue_free()
 	var scene = load(path).instantiate()
-	$CurrentSceneHolder.add_child(scene)
+	scene_container.add_child(scene)
 	current_scene = scene
 
 # 🔹 Salvar jogo
@@ -45,3 +47,7 @@ func _on_save_pressed() -> void:
 	
 func _on_load_pressed() -> void:
 	load_game(1)
+
+
+func _on_scene_2_pressed() -> void:
+	scene_component.change_scene("res://Scenes/Fases/scene_2.tscn") 

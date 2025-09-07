@@ -49,10 +49,20 @@ debug_toggle={
 [layer_names]
 
 2d_physics/layer_1="mapa"
-2d_physics/layer_2="player"
-2d_physics/layer_3="inimigos"
+2d_physics/layer_2="walls"
+2d_physics/layer_3="player"
+2d_physics/layer_4="player_detection"
+2d_physics/layer_5="player_hitbox"
+2d_physics/layer_6="player_hurtbox"
+2d_physics/layer_7="enemy"
+2d_physics/layer_8="enemy_hitbox"
+2d_physics/layer_9="enemy_hurtbox"
+2d_physics/layer_10="enemy_detection"
+2d_physics/layer_11="objects"
+2d_physics/layer_12="interactables"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

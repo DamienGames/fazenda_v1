@@ -2,28 +2,29 @@
 class_name SceneComponent
 extends Node2D	
 
-signal scene_changed(new_scene: Node)
-
-@export var transition_time: float = 0.5   # tempo de fade
 @onready var _fade_layer := _create_fade_layer()
 
+@export var transition_time: float = 0.5   # tempo de fade
+@export var scene_container: NodePath  # Aponta para o container dentro do Main
+
+var _scene_container: Node = null
 var _current_scene: Node
 
+signal scene_changed(new_scene: Node)
+
 func _ready() -> void:
-	if get_tree().current_scene:
-		_current_scene = get_tree().current_scene
+	if scene_container != NodePath():
+		_scene_container = get_node(scene_container)
 	else:
-		_current_scene = null
+		push_error("⚠ SceneComponent: Nenhum 'scene_container' definido!")
 
 
 # Troca a cena por caminho
 func change_scene(path: String, data: Dictionary = {}) -> void:
-	if not ResourceLoader.exists(path):
-		push_error("Scene not found: %s" % path)
+	if not _scene_container:
+		push_error("SceneComponent: Container não encontrado!")
 		return
-
 	_do_transition(path, data)
-
 
 # Recarrega a cena atual
 func reload_scene() -> void:
@@ -44,12 +45,12 @@ func _do_transition(path: String, data: Dictionary) -> void:
 	await get_tree().create_timer(transition_time).timeout
 
 	# Troca cena
-	if _current_scene:
-		_current_scene.queue_free()
+	for child in _scene_container.get_children():
+		child.queue_free()
 
-	_current_scene = new_scene_res.instantiate()
-	get_tree().root.add_child(_current_scene)
-	get_tree().current_scene = _current_scene
+	var new_scene = load(path).instantiate()
+	_scene_container.add_child(new_scene)
+	new_scene.owner = _scene_container 
 
 	# Passa dados se houver
 	if data.size() > 0 and _current_scene.has_method("set_data"):

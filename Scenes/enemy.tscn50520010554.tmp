@@ -114,6 +114,12 @@ offset_bottom = 27.0
 value = 100.0
 script = ExtResource("6_ghaa6")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.360784, 1, 1)
+
 [node name="DetectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("detection_area", "raycast")]
 script = ExtResource("7_1dp5w")
 detection_area = NodePath("Area2D")

@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0nqc2rtvhttk"]
+[gd_scene load_steps=10 format=3 uid="uid://d0nqc2rtvhttk"]
 
 [ext_resource type="Script" uid="uid://byb5oq8ear5sv" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://bimbt70uf6mf2" path="res://Scripts/Components/scene_component.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://w3tc0mjmu7oa" path="res://Scripts/UI/debug.gd" id="3_jjvhh"]
 [ext_resource type="FontFile" uid="uid://byey2nx6trh4i" path="res://UI/arial.ttf" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://bww7iy834y83v" path="res://Scripts/Enemies/enemy_spawner.gd" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dk3t1o176qtku" path="res://Scenes/enemy.tscn" id="6_21xkr"]
+[ext_resource type="Texture2D" uid="uid://blcbr34yned7" path="res://Art/Sprites/relogio.png" id="7_6bp64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
 
 [sub_resource type="FontVariation" id="FontVariation_jjvhh"]
 base_font = ExtResource("4_jjvhh")
@@ -12,49 +17,95 @@ base_font = ExtResource("4_jjvhh")
 script = ExtResource("1_bo1nx")
 initial_scene_path = "uid://6yn3wovv18cy"
 
-[node name="CurrentSceneHolder" type="Node2D" parent="."]
+[node name="SceneContainer" type="Node2D" parent="."]
 
 [node name="SceneComponent" type="Node2D" parent="."]
 script = ExtResource("3_8gbba")
+scene_container = NodePath("../SceneContainer")
 metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(69, 53)
+script = ExtResource("5_kry3j")
+enemy_scene = ExtResource("6_21xkr")
+spawn_points = Array[NodePath]([NodePath("Area2D"), NodePath("Area2D2")])
+spawn_interval = 10.0
 
-[node name="save" type="Button" parent="CanvasLayer"]
+[node name="Area2D" type="Area2D" parent="EnemySpawner"]
+position = Vector2(116, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/Area2D"]
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="Area2D2" type="Area2D" parent="EnemySpawner"]
+position = Vector2(16, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/Area2D2"]
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
+
+[node name="save" type="Button" parent="DEBUGOPTIONS"]
 offset_left = 168.0
 offset_top = 18.0
 offset_right = 215.0
 offset_bottom = 49.0
 text = "SAVE"
 
-[node name="load" type="Button" parent="CanvasLayer"]
+[node name="load" type="Button" parent="DEBUGOPTIONS"]
 offset_left = 84.0
 offset_top = 15.0
 offset_right = 140.0
 offset_bottom = 46.0
 text = " LOAD"
 
+[node name="scene2" type="Button" parent="DEBUGOPTIONS"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "CENA 2"
+
 [node name="DEBUG" type="CanvasLayer" parent="."]
-scale = Vector2(0.1, 0.1)
-transform = Transform2D(0.1, 0, 0, 0.1, 0, 0)
+visible = false
+scale = Vector2(0.15, 0.15)
+transform = Transform2D(0.15, 0, 0, 0.15, 0, 0)
 script = ExtResource("3_jjvhh")
 
 [node name="Panel" type="Panel" parent="DEBUG"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(6.90208, 10.0691)
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+scale = Vector2(5, 5)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DEBUG/Panel"]
+modulate = Color(0.989864, 0.493955, 0.944735, 1)
 layout_mode = 0
-offset_right = 55.0
-offset_bottom = 55.0
-scale = Vector2(1.552, 1.6)
+offset_right = 261.0
+offset_bottom = 250.0
+scale = Vector2(1.94, 2)
 theme_override_fonts/normal_font = SubResource("FontVariation_jjvhh")
-theme_override_font_sizes/normal_font_size = 8
-theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
 fit_content = true
-scroll_active = false
+scroll_following = true
 autowrap_mode = 0
 
-[connection signal="pressed" from="CanvasLayer/save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="CanvasLayer/load" to="." method="_on_load_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -319.0
+offset_top = 12.0
+offset_right = -277.0
+offset_bottom = 52.0
+grow_horizontal = 0
+scale = Vector2(6.79086, 4.49561)
+texture = ExtResource("7_6bp64")
+
+[connection signal="pressed" from="DEBUGOPTIONS/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="DEBUGOPTIONS/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="DEBUGOPTIONS/scene2" to="." method="_on_scene_2_pressed"]

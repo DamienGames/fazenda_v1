@@ -1,6 +1,5 @@
-# WalkState.gd
 extends State
-class_name StateWalk
+class_name  EnemyPatrol
 
 func enter(_actor: Node, _data := {}) -> void:
 	super.enter(_actor, _data)

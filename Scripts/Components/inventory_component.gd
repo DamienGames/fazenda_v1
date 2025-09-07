@@ -90,9 +90,12 @@ func apply_buff(player: Node, target: int, value: int, duration: float) -> void:
 	match target:
 		effect_database.Target.ATTACK:
 			player.attack += value
-			# aqui você pode iniciar um Timer para remover o buff depois
+			await get_tree().create_timer(duration).timeout
+			player.defense -= value
 		effect_database.Target.DEFENSE:
 			player.defense += value
+			await get_tree().create_timer(duration).timeout
+			player.defense -= value
 
 # --- CONSULTA ---
 func has_item(id: String, quantity: int = 1) -> bool:

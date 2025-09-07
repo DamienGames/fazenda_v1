@@ -1,8 +1,6 @@
 extends Node
 class_name State
 
-signal transiotioned(state: State, new_state_name: String)
-
 # Referência ao dono (ex: Player, Enemy, NPC)
 var actor: Node
 
