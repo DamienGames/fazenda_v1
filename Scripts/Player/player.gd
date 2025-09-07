@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -9,7 +9,8 @@ const JUMP_VELOCITY = -400.0
 
 var input_vector: Vector2 = Vector2.ZERO
 var current_state : String
-var facing_direction: Vector2
+var facing_direction: Vector2 = Vector2.DOWN 
+
 
 func _ready() -> void:	
 	 # Registrar estados

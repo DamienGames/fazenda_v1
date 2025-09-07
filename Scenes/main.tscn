@@ -44,6 +44,7 @@ position = Vector2(16, 19)
 shape = SubResource("RectangleShape2D_6bp64")
 
 [node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="save" type="Button" parent="DEBUGOPTIONS"]
 offset_left = 168.0

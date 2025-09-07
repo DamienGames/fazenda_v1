@@ -15,8 +15,8 @@ func enter(_actor: Node, _data := {}) -> void:
 			_actor.animated_sprite_2d.play("u_idle")
 
 func update(_actor: Node, delta: float) -> void:
-	if actor.input_vector != Vector2.ZERO:
-		actor.state_machine.change_state("walk")
+	if _actor.input_vector != Vector2.ZERO:
+		_actor.state_machine.change_state("walk")
 
 	if Input.is_action_just_pressed("attack"):
-		actor.state_machine.change_state("attack")
+		_actor.state_machine.change_state("attack")
