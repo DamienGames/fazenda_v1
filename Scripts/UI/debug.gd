@@ -25,13 +25,15 @@ func update_debug_info():
 	var player_health := "?"
 	var player_pos := "?"
 	var current_state := "?"
+	var animation := "?"
+	
 	if player:
 		var health_component = player.get_node_or_null("HealthComponent")
-		current_state = player.current_state
-		
+		current_state = player.current_state		
 		if health_component:
 			player_health = str(health_component.current_health, "/", health_component.max_health)
-			
+		var animate_sprite = player.get_node_or_null("AnimatedSprite2D")
+		animation = animate_sprite.animation
 		player_pos = str(player.global_position)
 
 	var text := """
@@ -41,6 +43,7 @@ func update_debug_info():
 	Player Pos: %s
 	Player Health: %s
 	CurrentState: %s
+	Animation: %s
 	Gold: %d
 	XP: %d
 	Quests: %s
@@ -52,6 +55,7 @@ func update_debug_info():
 		player_pos,
 		player_health,
 		current_state,
+		animation,
 		GlobalData.gold,
 		GlobalData.xp,
 		str(GlobalData.quests),

@@ -9,9 +9,9 @@ const JUMP_VELOCITY = -400.0
 
 var input_vector: Vector2 = Vector2.ZERO
 var current_state : String
+var facing_direction: Vector2
 
-func _ready() -> void:
-	progress_bar.value = 100;
+func _ready() -> void:	
 	 # Registrar estados
 	state_machine.add_state("idle", PlayerIdle.new())
 	state_machine.add_state("walk", PlayerWalk.new())

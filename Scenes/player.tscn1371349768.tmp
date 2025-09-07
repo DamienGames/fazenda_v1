@@ -209,7 +209,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xuaoq")
 }],
-"loop": false,
+"loop": true,
 "name": &"s_attack",
 "speed": 5.0
 }, {
@@ -251,7 +251,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xwi16")
 }],
-"loop": false,
+"loop": true,
 "name": &"u_attack",
 "speed": 5.0
 }, {
@@ -287,9 +287,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
 size = Vector2(5.02199, 5.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpjfl"]
-radius = 6.53435
-height = 18.0166
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3wgy"]
+radius = 4.0
+height = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3smsa"]
 radius = 3.0
@@ -305,9 +305,7 @@ zoom = Vector2(5, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"d_attack"
-frame = 2
-frame_progress = 1.0
+animation = &"u_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 1.75)
@@ -342,8 +340,7 @@ script = ExtResource("5_fkybt")
 metadata/_custom_type_script = "uid://c0nbllp12uxu5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-1.97987, 16.8592)
-shape = SubResource("CapsuleShape2D_wpjfl")
+shape = SubResource("CapsuleShape2D_x3wgy")
 disabled = true
 debug_color = Color(0.85614, 0.56241, 0.121284, 0.419608)
 
@@ -372,6 +369,7 @@ script = ExtResource("13_fd4e3")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("13_7dp3o")
+speed = null
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("14_h4iuc")

@@ -18,11 +18,11 @@ func enter(_actor: Node, _data := {}) -> void:
 	_actor.set_collision_layer(0)
 	_actor.set_collision_mask(0)
 
-func update(delta: float):
+func update(_actor: Node, delta: float):
 	# Aqui normalmente não faz nada
 	pass
 
-func exit():
+func exit(_actor: Node):
 	# Em teoria, DeadState não costuma sair, mas caso queira "reviver"
 	# pode reativar tudo aqui
 	pass
