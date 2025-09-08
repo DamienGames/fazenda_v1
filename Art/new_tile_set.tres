@@ -1,4 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cwhgw7kdxcdue"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://cwhgw7kdxcdue"]
+
+[ext_resource type="Texture2D" uid="uid://dhrqfslfa5kd8" path="res://Art/Sprites/mesa.png" id="1_o4j6n"]
+[ext_resource type="Texture2D" uid="uid://ihxpvmne38nq" path="res://Art/Sprites/geladeira.png" id="2_lse22"]
+[ext_resource type="Texture2D" uid="uid://dqjiwd2wig4xc" path="res://Art/Sprites/armario.png" id="3_2f0to"]
+[ext_resource type="Texture2D" uid="uid://cxk12sjasqm7a" path="res://Art/Sprites/cama_casal.png" id="4_minf2"]
+[ext_resource type="Texture2D" uid="uid://dssapbq4tbinr" path="res://Art/Sprites/lampada.png" id="5_insdx"]
+[ext_resource type="Texture2D" uid="uid://dqukd1wwdo3ow" path="res://Art/Sprites/tapete.png" id="5_lse22"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtlni"]
 load_path = "res://.godot/imported/TileSet.png-00ff546245a9bdee511cc9fd93aac332.ctex"
@@ -97,6 +104,7 @@ use_texture_padding = false
 10:5/0/terrains_peering_bit/right_side = 0
 10:5/0/terrains_peering_bit/bottom_side = 0
 11:5/0 = 0
+11:5/0/modulate = Color(1.4230455, 0.7208996, 0.44910118, 0.77254903)
 11:5/0/terrain_set = 0
 11:5/0/terrain = 0
 11:5/0/terrains_peering_bit/right_side = 0
@@ -122,6 +130,7 @@ use_texture_padding = false
 10:6/0/terrains_peering_bit/bottom_side = 0
 10:6/0/terrains_peering_bit/top_side = 0
 11:6/0 = 0
+11:6/0/modulate = Color(1.4164544, 1.4164544, 0.9952966, 1)
 12:6/0 = 0
 0:7/0 = 0
 1:7/0 = 0
@@ -214,9 +223,54 @@ use_texture_padding = false
 11:12/0 = 0
 12:12/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7e17"]
+texture = ExtResource("1_o4j6n")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2ppm"]
+texture = ExtResource("2_lse22")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o2j7k"]
+texture = ExtResource("3_2f0to")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43qp2"]
+texture = ExtResource("4_minf2")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2f0to"]
+texture = ExtResource("5_lse22")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5itr4"]
+texture = ExtResource("5_insdx")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(8, 8)
 terrain_set_0/mode = 2
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.0901961, 0.2, 0.894118, 1)
 sources/0 = SubResource("TileSetAtlasSource_r2lln")
+sources/1 = SubResource("TileSetAtlasSource_g7e17")
+sources/2 = SubResource("TileSetAtlasSource_q2ppm")
+sources/3 = SubResource("TileSetAtlasSource_o2j7k")
+sources/4 = SubResource("TileSetAtlasSource_43qp2")
+sources/6 = SubResource("TileSetAtlasSource_5itr4")
+sources/5 = SubResource("TileSetAtlasSource_2f0to")

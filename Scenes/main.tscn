@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://byb5oq8ear5sv" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://bimbt70uf6mf2" path="res://Scripts/Components/scene_component.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://w3tc0mjmu7oa" path="res://Scripts/UI/debug.gd" id="3_jjvhh"]
-[ext_resource type="FontFile" uid="uid://byey2nx6trh4i" path="res://UI/arial.ttf" id="4_jjvhh"]
+[ext_resource type="FontFile" uid="uid://nm06t5ou2mam" path="res://UI/arial.ttf" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://bww7iy834y83v" path="res://Scripts/Enemies/enemy_spawner.gd" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://dk3t1o176qtku" path="res://Scenes/enemy.tscn" id="6_21xkr"]
-[ext_resource type="Texture2D" uid="uid://blcbr34yned7" path="res://Art/Sprites/relogio.png" id="7_6bp64"]
+[ext_resource type="Texture2D" uid="uid://b8rpsqpqxgiow" path="res://Art/Sprites/relogio.png" id="7_6bp64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
 
@@ -44,9 +44,9 @@ position = Vector2(16, 19)
 shape = SubResource("RectangleShape2D_6bp64")
 
 [node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="save" type="Button" parent="DEBUGOPTIONS"]
+anchors_preset = -1
 offset_left = 168.0
 offset_top = 18.0
 offset_right = 215.0
@@ -54,6 +54,7 @@ offset_bottom = 49.0
 text = "SAVE"
 
 [node name="load" type="Button" parent="DEBUGOPTIONS"]
+anchors_preset = -1
 offset_left = 84.0
 offset_top = 15.0
 offset_right = 140.0
@@ -61,6 +62,7 @@ offset_bottom = 46.0
 text = " LOAD"
 
 [node name="scene2" type="Button" parent="DEBUGOPTIONS"]
+anchors_preset = -1
 offset_right = 8.0
 offset_bottom = 8.0
 text = "CENA 2"
@@ -74,8 +76,9 @@ script = ExtResource("3_jjvhh")
 [node name="Panel" type="Panel" parent="DEBUG"]
 clip_contents = true
 custom_minimum_size = Vector2(500, 500)
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
+offset_right = 500.0
 grow_vertical = 2
 scale = Vector2(5, 5)
 
@@ -96,7 +99,7 @@ autowrap_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -319.0
