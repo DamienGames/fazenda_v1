@@ -16,10 +16,11 @@ script = ExtResource("1_sppij")
 
 [node name="InventoryUI" parent="." instance=ExtResource("2_ss1j3")]
 visible = true
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 0
+offset_left = -125.0
+offset_top = 4.0
+offset_right = -85.0
+offset_bottom = 44.0
 
 [node name="Player" parent="." instance=ExtResource("3_8umo0")]
 position = Vector2(-105, -3)
@@ -46,4 +47,5 @@ shape = SubResource("RectangleShape2D_ss1j3")
 script = ExtResource("7_8umo0")
 metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 
+[connection signal="pick_up" from="Player" to="InventoryUI" method="_on_player_pick_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,7 +1,7 @@
 extends Node
 class_name SaveLoadComponent
 
-@export var encryption_password := "walds"
+@export var encryption_password := "password123"
 
 const SAVE_PATH = "user://saves/"
 var current_slot: int = 1

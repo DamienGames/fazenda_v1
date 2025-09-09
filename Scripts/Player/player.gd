@@ -11,6 +11,7 @@ var input_vector: Vector2 = Vector2.ZERO
 var current_state : String
 var facing_direction: Vector2 = Vector2.DOWN 
 
+signal pick_up
 
 func _ready() -> void:	
 	 # Registrar estados
@@ -18,7 +19,7 @@ func _ready() -> void:
 	state_machine.add_state("walk", PlayerWalk.new())
 	state_machine.add_state("attack", PlayerAttack.new())
 	state_machine.add_state("dead", PlayerDead.new())
-
+	pick_up.emit("item_001", 10)
 	# Começa em idle
 	state_machine.change_state("idle")
 

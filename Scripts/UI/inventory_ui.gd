@@ -22,3 +22,8 @@ func _on_player_pick(id: String, amount: int) -> void:
 func _on_player_drop(id: String, amount: int) -> void:
 		inventory.remove_item(id, amount)
 		refresh_inventory() 
+
+
+func _on_player_pick_up(id: String, amount: int) -> void:
+	inventory.add_item(id, amount)
+	refresh_inventory()  # Replace with function body.

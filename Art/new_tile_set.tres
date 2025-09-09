@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=15 format=3 uid="uid://cwhgw7kdxcdue"]
 
-[ext_resource type="Texture2D" uid="uid://dhrqfslfa5kd8" path="res://Art/Sprites/mesa.png" id="1_o4j6n"]
-[ext_resource type="Texture2D" uid="uid://ihxpvmne38nq" path="res://Art/Sprites/geladeira.png" id="2_lse22"]
-[ext_resource type="Texture2D" uid="uid://dqjiwd2wig4xc" path="res://Art/Sprites/armario.png" id="3_2f0to"]
-[ext_resource type="Texture2D" uid="uid://cxk12sjasqm7a" path="res://Art/Sprites/cama_casal.png" id="4_minf2"]
-[ext_resource type="Texture2D" uid="uid://dssapbq4tbinr" path="res://Art/Sprites/lampada.png" id="5_insdx"]
-[ext_resource type="Texture2D" uid="uid://dqukd1wwdo3ow" path="res://Art/Sprites/tapete.png" id="5_lse22"]
+[ext_resource type="Texture2D" uid="uid://bc3a06fwgmlcq" path="res://Art/Sprites/mesa.png" id="1_o4j6n"]
+[ext_resource type="Texture2D" uid="uid://c2hmi8n05kuw4" path="res://Art/Sprites/geladeira.png" id="2_lse22"]
+[ext_resource type="Texture2D" uid="uid://cc81id3j64102" path="res://Art/Sprites/armario.png" id="3_2f0to"]
+[ext_resource type="Texture2D" uid="uid://c4g8sdch2kp43" path="res://Art/Sprites/cama_casal.png" id="4_minf2"]
+[ext_resource type="Texture2D" uid="uid://c5jeble5kb30x" path="res://Art/Sprites/lampada.png" id="5_insdx"]
+[ext_resource type="Texture2D" uid="uid://dmt70f4saj04u" path="res://Art/Sprites/tapete.png" id="5_lse22"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtlni"]
 load_path = "res://.godot/imported/TileSet.png-00ff546245a9bdee511cc9fd93aac332.ctex"
@@ -104,7 +104,7 @@ use_texture_padding = false
 10:5/0/terrains_peering_bit/right_side = 0
 10:5/0/terrains_peering_bit/bottom_side = 0
 11:5/0 = 0
-11:5/0/modulate = Color(1.4230455, 0.7208996, 0.44910118, 0.77254903)
+11:5/0/modulate = Color(1.42305, 0.7209, 0.449101, 0.772549)
 11:5/0/terrain_set = 0
 11:5/0/terrain = 0
 11:5/0/terrains_peering_bit/right_side = 0
@@ -130,7 +130,7 @@ use_texture_padding = false
 10:6/0/terrains_peering_bit/bottom_side = 0
 10:6/0/terrains_peering_bit/top_side = 0
 11:6/0 = 0
-11:6/0/modulate = Color(1.4164544, 1.4164544, 0.9952966, 1)
+11:6/0/modulate = Color(1.41645, 1.41645, 0.995297, 1)
 12:6/0 = 0
 0:7/0 = 0
 1:7/0 = 0

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 
 @export var speed := 50
+signal pick_up()
 
 func _ready() -> void:
 	# Registrar estados
@@ -12,6 +13,7 @@ func _ready() -> void:
 	state_machine.add_state("walk",  EnemyPatrol.new())
 	state_machine.add_state("attack", EnemyAttack.new())
 	state_machine.add_state("dead", EnemyDead.new())
+	pick_up.emit()
 
 	# Começa em idle
 	state_machine.change_state("idle")

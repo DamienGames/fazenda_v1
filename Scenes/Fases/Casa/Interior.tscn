@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://0hnfpktslcqd"]
 
 [ext_resource type="TileSet" uid="uid://cwhgw7kdxcdue" path="res://Art/new_tile_set.tres" id="1_kuayp"]
-[ext_resource type="Texture2D" uid="uid://c2tqd1xhrbukt" path="res://Art/Sprites/light.png" id="2_nxpkm"]
+[ext_resource type="Texture2D" uid="uid://fjevu7ltxoum" path="res://Art/Sprites/light.png" id="2_nxpkm"]
 
 [node name="Interior" type="Node2D"]
 
@@ -20,28 +20,28 @@ tile_set = ExtResource("1_kuayp")
 [node name="PointLight2D" type="PointLight2D" parent="Objects"]
 position = Vector2(28, 3)
 scale = Vector2(0.3, 0.3)
-color = Color(0.9639873, 0.8023081, 0.22478595, 1)
+color = Color(0.963987, 0.802308, 0.224786, 1)
 energy = 0.3
 texture = ExtResource("2_nxpkm")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Objects"]
 position = Vector2(52, 3)
 scale = Vector2(0.3, 0.3)
-color = Color(0.9639873, 0.8023081, 0.22478595, 1)
+color = Color(0.963987, 0.802308, 0.224786, 1)
 energy = 0.3
 texture = ExtResource("2_nxpkm")
 
 [node name="PointLight2D3" type="PointLight2D" parent="Objects"]
 position = Vector2(100, 4)
 scale = Vector2(0.3, 0.3)
-color = Color(0.9639873, 0.8023081, 0.22478595, 1)
+color = Color(0.963987, 0.802308, 0.224786, 1)
 energy = 0.3
 texture = ExtResource("2_nxpkm")
 
 [node name="PointLight2D4" type="PointLight2D" parent="Objects"]
 position = Vector2(124, 5)
 scale = Vector2(0.3, 0.3)
-color = Color(0.9639873, 0.8023081, 0.22478595, 1)
+color = Color(0.963987, 0.802308, 0.224786, 1)
 energy = 0.3
 texture = ExtResource("2_nxpkm")
 
