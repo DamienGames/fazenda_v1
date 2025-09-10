@@ -8,6 +8,8 @@ var items: Dictionary = {
 		"description" : "Espada antiga encontrada na floresta",
 		"max_stack": 1,
 		"icon": preload("res://Art/Icons/sword.png"),
+		"gold_cost": 100,
+		"durability": 100,
 		"effects":
 			[ 
 				{
@@ -36,6 +38,7 @@ var items: Dictionary = {
 		"description" : "Restaura 10 de HP",
 		"max_stack": 99,
 		"icon": preload("res://Art/Icons/potion.png"),
+		"gold_cost": 50,
 		"effects":
 			[ 
 				{
@@ -44,7 +47,6 @@ var items: Dictionary = {
 					"type" : EffectDataBase.Type.HEAL,
 					"target_group" : EffectDataBase.TargetGroup.SELF,
 					"amount": 20,
-					"duration" : ""
 				}
 		]
 	}	

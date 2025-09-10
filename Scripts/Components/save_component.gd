@@ -1,3 +1,4 @@
+@icon("res://Art/Icons/save.svg")
 extends Node
 class_name GameSaveManager
 

@@ -2,7 +2,6 @@
 extends Node
 class_name InventoryComponent
 
-
 @export var item_database: ItemDatabase
 @export var effect_database: EffectDataBase
 

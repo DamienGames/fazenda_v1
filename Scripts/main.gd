@@ -2,13 +2,17 @@ extends Node
 
 @onready var save_load = SaveLoadComponent.new()
 @export var current_scene: Node = null	
+@export var calendar: CalendarComponent
+
 @export_file("*.tscn") var initial_scene_path: String
 @onready var scene_component: SceneComponent = $SceneComponent
 @onready var scene_container: Control = $SceneContainer
 
-func _ready() -> void:	
+func _ready() -> void:	 
 	change_scene(initial_scene_path)
-
+	calendar.change_next_season("season_1")
+	print(calendar.get_full_date())
+	print(calendar.get_season_events("season_1"))
 
 func change_scene(path: String) -> void:
 	if current_scene:

@@ -15,7 +15,8 @@ func _physics_process(delta: float) -> void:
 
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
-
+			print(target)
+			print(collider)
 			# Só confirma visão se o primeiro collider é o alvo
 			if collider == target:
 				has_line_of_sight = true

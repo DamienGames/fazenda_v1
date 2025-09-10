@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://dk3t1o176qtku"]
 
-[ext_resource type="Texture2D" uid="uid://be3etkdnpj08o" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://bfgkg47wslnai" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://0u5xqwun7do8" path="res://Scripts/Enemies/enemy.gd" id="1_0830c"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_287tu"]
-[ext_resource type="Texture2D" uid="uid://bgdkan0sehr5j" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="2_auwsv"]
+[ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="2_auwsv"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="3_287tu"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="4_0830c"]
 [ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/UI/progress_bar.gd" id="6_ghaa6"]
@@ -109,6 +109,7 @@ shape = SubResource("CapsuleShape2D_0830c")
 debug_color = Color(0.824288, 0.115722, 0.272508, 0.419608)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
 offset_right = 4.0
 offset_bottom = 27.0
 value = 100.0
@@ -130,7 +131,7 @@ debug_color = Color(0.0664663, 0.533889, 0.199334, 0.419608)
 
 [node name="RayCast2D" type="RayCast2D" parent="DetectionComponent"]
 target_position = Vector2(0, 88)
-collision_mask = 3151
+collision_mask = 3087
 collide_with_areas = true
 
 [node name="StateMachine" type="Node" parent="."]
