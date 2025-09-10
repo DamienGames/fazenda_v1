@@ -1,15 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0nqc2rtvhttk"]
+[gd_scene load_steps=7 format=3 uid="uid://d0nqc2rtvhttk"]
 
 [ext_resource type="Script" uid="uid://byb5oq8ear5sv" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://bimbt70uf6mf2" path="res://Scripts/Components/scene_component.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://w3tc0mjmu7oa" path="res://Scripts/UI/debug.gd" id="3_jjvhh"]
 [ext_resource type="FontFile" uid="uid://byey2nx6trh4i" path="res://UI/arial.ttf" id="4_jjvhh"]
-[ext_resource type="Script" uid="uid://bww7iy834y83v" path="res://Scripts/Enemies/enemy_spawner.gd" id="5_kry3j"]
-[ext_resource type="PackedScene" uid="uid://dk3t1o176qtku" path="res://Scenes/enemy.tscn" id="6_21xkr"]
-[ext_resource type="Texture2D" uid="uid://blcbr34yned7" path="res://Art/Sprites/relogio.png" id="7_6bp64"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
-size = Vector2(21, 60)
+[ext_resource type="Texture2D" uid="uid://rpfvj00qcqac" path="res://Art/Sprites/display_relogio.png" id="7_6bp64"]
 
 [sub_resource type="FontVariation" id="FontVariation_jjvhh"]
 base_font = ExtResource("4_jjvhh")
@@ -18,34 +13,20 @@ base_font = ExtResource("4_jjvhh")
 script = ExtResource("1_bo1nx")
 initial_scene_path = "uid://6yn3wovv18cy"
 
-[node name="SceneContainer" type="Node2D" parent="."]
-
-[node name="SceneComponent" type="Node2D" parent="."]
-script = ExtResource("3_8gbba")
-scene_container = NodePath("../SceneContainer")
-metadata/_custom_type_script = "uid://bimbt70uf6mf2"
-
-[node name="EnemySpawner" type="Node2D" parent="."]
-position = Vector2(69, 53)
-script = ExtResource("5_kry3j")
-enemy_scene = ExtResource("6_21xkr")
-spawn_points = Array[NodePath]([NodePath("Area2D"), NodePath("Area2D2")])
-spawn_interval = 10.0
-
-[node name="Area2D" type="Area2D" parent="EnemySpawner"]
-position = Vector2(422, 317)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/Area2D"]
-shape = SubResource("RectangleShape2D_6bp64")
-
-[node name="Area2D2" type="Area2D" parent="EnemySpawner"]
-position = Vector2(16, 19)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/Area2D2"]
-position = Vector2(567, 205)
-shape = SubResource("RectangleShape2D_6bp64")
+[node name="SceneContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.01714, 1)
+size_flags_horizontal = 8
 
 [node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+follow_viewport_scale = 0.001
 
 [node name="save" type="Button" parent="DEBUGOPTIONS"]
 offset_left = 168.0
@@ -95,19 +76,35 @@ scroll_following = true
 autowrap_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+follow_viewport_scale = 0.001
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-texture_filter = 1
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -319.0
-offset_top = 12.0
-offset_right = -277.0
-offset_bottom = 52.0
+offset_left = -26.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 36.0
 grow_horizontal = 0
-scale = Vector2(6.79086, 4.49561)
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 texture = ExtResource("7_6bp64")
+stretch_mode = 4
+
+[node name="SceneComponent" type="Node2D" parent="."]
+scale = Vector2(5, 5)
+script = ExtResource("3_8gbba")
+scene_container = NodePath("../SceneContainer")
+metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 
 [connection signal="pressed" from="DEBUGOPTIONS/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="DEBUGOPTIONS/load" to="." method="_on_load_pressed"]

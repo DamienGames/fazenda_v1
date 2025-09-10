@@ -4,15 +4,17 @@ extends Node
 @export var current_scene: Node = null	
 @export_file("*.tscn") var initial_scene_path: String
 @onready var scene_component: SceneComponent = $SceneComponent
-@onready var scene_container: Node2D = $SceneContainer
+@onready var scene_container: Control = $SceneContainer
 
 func _ready() -> void:	
 	change_scene(initial_scene_path)
+
 
 func change_scene(path: String) -> void:
 	if current_scene:
 		current_scene.queue_free()
 	var scene = load(path).instantiate()
+	scene_component.spawn_player(scene)
 	scene_container.add_child(scene)
 	current_scene = scene
 

@@ -3,4 +3,9 @@
 [ext_resource type="Script" uid="uid://bimbt70uf6mf2" path="res://Scripts/Components/scene_component.gd" id="1_x1wxf"]
 
 [node name="SceneComponent" type="Node2D"]
+self_modulate = Color(0.603922, 0.690196, 0.501961, 0.498039)
+top_level = true
+z_index = 11
 script = ExtResource("1_x1wxf")
+transition_time = 20.0
+scene_container = NodePath(".")

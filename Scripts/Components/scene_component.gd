@@ -3,12 +3,13 @@ class_name SceneComponent
 extends Node2D	
 
 @onready var _fade_layer := _create_fade_layer()
-
-@export var transition_time: float = 0.5   # tempo de fade
+@export var transition_time: float = 0.4   # tempo de fade
 @export var scene_container: NodePath  # Aponta para o container dentro do Main
 
 var _scene_container: Node = null
 var _current_scene: Node
+
+const PLAYER = preload("res://Scenes/player.tscn")
 
 signal scene_changed(new_scene: Node)
 
@@ -59,18 +60,40 @@ func _do_transition(path: String, data: Dictionary) -> void:
 	emit_signal("scene_changed", _current_scene)
 
 	# Anima fade in
-	_fade(false)
+	_fade(false)	
+	spawn_player(new_scene)
+
+func spawn_player(level: Node):
+	var spawn = level.get_node_or_null("PlayerSpawn")
+	if spawn:
+		var player = PLAYER.instantiate()
+		player.global_position = spawn.global_position
+		level.add_child(player)
 
 
 # Cria camada de fade (preto sobre tudo)
 func _create_fade_layer() -> ColorRect:
-	var rect = ColorRect.new()
+	var rect := ColorRect.new()
 	rect.color = Color.BLACK
-	rect.size = get_viewport().size
 	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	rect.visible = false
-	add_child(rect)
 	rect.z_index = 999
+	
+	# Anchors de 0 a 1 para ocupar toda a tela
+	rect.anchor_left = 0.0
+	rect.anchor_top = 0.0
+	rect.anchor_right = 1.0
+	rect.anchor_bottom = 1.0
+	
+	rect.offset_left = 0
+	rect.offset_top = 0
+	rect.offset_right = 0
+	rect.offset_bottom = 0
+	
+	# ⚠️ IMPORTANTE: adicionar num CanvasLayer ou Control
+	var layer := CanvasLayer.new()
+	add_child(layer)  # aqui "self" pode ser Node2D
+	layer.add_child(rect)
 	return rect
 
 

@@ -22,8 +22,11 @@ SaveGlobal="*res://Scripts/Components/save_component.gd"
 
 [display]
 
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/borderless=true
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/scale=4.0
 
 [global_group]
 
@@ -60,6 +63,7 @@ debug_toggle={
 2d_physics/layer_10="enemy_detection"
 2d_physics/layer_11="objects"
 2d_physics/layer_12="interactables"
+2d_physics/layer_13="transition"
 
 [rendering]
 

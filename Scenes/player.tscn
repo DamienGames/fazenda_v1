@@ -22,7 +22,6 @@
 [ext_resource type="Script" uid="uid://bjdx3waxhxdc3" path="res://Scripts/StateMachine/Player/player_idle.gd" id="13_fd4e3"]
 [ext_resource type="Script" uid="uid://bhfxpb417a3v8" path="res://Scripts/StateMachine/Player/player_attack.gd" id="14_h4iuc"]
 [ext_resource type="Script" uid="uid://mldrx28smy8b" path="res://Scripts/StateMachine/Player/player_dead.gd" id="16_fd4e3"]
-[ext_resource type="Script" uid="uid://dw6exlr2ea6sv" path="res://Scripts/UI/inventory_slot.gd" id="23_bi64h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
 atlas = ExtResource("2_h4iuc")
@@ -286,7 +285,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(5.02199, 5.5)
+size = Vector2(3.91668, 2.26282)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpjfl"]
 radius = 6.53435
@@ -296,15 +295,17 @@ height = 18.0166
 radius = 3.0
 height = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpjfl"]
+
 [node name="Player" type="CharacterBody2D" groups=["player", "player_detection"]]
-z_index = 3
+z_index = 2
+z_as_relative = false
 y_sort_enabled = true
 collision_layer = 4
-collision_mask = 3139
+collision_mask = 7234
 script = ExtResource("1_vgqql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
@@ -312,12 +313,13 @@ animation = &"d_attack"
 frame = 2
 frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(0, 1.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.00899023, 3.64062)
 scale = Vector2(0.995621, 1)
 shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -23.0
 offset_top = -34.0
 offset_right = 21.0
@@ -382,15 +384,14 @@ script = ExtResource("14_h4iuc")
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("16_fd4e3")
 
-[node name="InventorySlot" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("23_bi64h")
-metadata/_custom_type_script = "uid://dw6exlr2ea6sv"
+[node name="PlayerDetection" type="Area2D" parent="." groups=["player_detection"]]
+position = Vector2(-5.32867, -1.07902)
+collision_layer = 8
+collision_mask = 576
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(5.52246, 5.15777)
+shape = SubResource("CircleShape2D_wpjfl")
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="hurt" from="HurtboxComponent" to="." method="_on_hurtbox_component_hurt"]
