@@ -53,10 +53,10 @@ var seasons : Dictionary = {
 		}
 	},
 	"season_3" :{
-		"name": "Outono",
+		"name": "Inverno",
 		"short_name":"INV",
 		"description":"O inverno é a estação mais fria do ano, caracterizada por temperaturas baixas, dias mais curtos e noites mais longas devido à inclinação do eixo terrestre",
-		"next_season" : 'Primavera',
+		"next_season" : 'season_0',
 		"icon": preload("res://Art/Icons/sword.png"),
 		"spawn_rate": {
 			"flowers": "none",
@@ -68,35 +68,33 @@ var seasons : Dictionary = {
 	}
 }
 
-var week_days : Dictionary = {
+var week_days : Dictionary = {	
 	"week_day_0" : {
-		"name" : "Domingo",
-		 "short_name" : "DOM"
-	},
-	"week_day_1" : {
 		 "name" : "Segunda-feira",
 		 "short_name" : "SEG"
 	},
-	"week_day_2" : {
+	"week_day_1" : {
 		 "name" : "Terça-feira",
 		 "short_name" : "TER"
 	},
-	"week_day_3" : {
+	"week_day_2" : {
 		 "name" : "Quarta-feira",
 		 "short_name" : "QUA"
 	},
-	"week_day_4" : {
+	"week_day_3" : {
 		 "name" : "Quinta-feira",
 		 "short_name" : "QUI"
 	},
-	"week_day_5" : {
+	"week_day_4" : {
 		 "name" : "Sexta-feira",
 		 "short_name" : "SEX"
 	},
-	"week_day_6" : {
+	"week_day_5" : {
 		 "name" : "Sábado",
 		 "short_name" : "SÁB"
-	}
-	
-	
+	},		
+	"week_day_6" : {
+		"name" : "Domingo",
+		"short_name" : "DOM",
+	},
 }
