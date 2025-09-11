@@ -1,27 +1,20 @@
 extends Resource
 class_name CalendarDatabase
 
-func get_next_season(season_id:String):
-		var current_season = seasons.get(season_id)	
+func get_next_season(season_name:String):
+		if seasons.has(season_name):
+			print(season_name)
+		var current_season = seasons.get(season_name)	
 		if current_season:
 			var next_season = seasons.get(current_season["next_season"])	 
 			return next_season
 
-func get_season_name(season_id: String) -> String:
-	if seasons.has(season_id):
-		return seasons[season_id].get("name", "")
-	return ""
-	
-func get_week_day_name(week_day_id: String) -> String:
-	if week_days.has(week_day_id):
-		return week_days[week_day_id].get("name", "")
-	return ""	
-
 var seasons : Dictionary = { 
-	"season_1" :{
-		"name":"Primavera",
+	"season_0" :{
+		"name": "Primavera",
+		"short_name":"PRI",
 		"description":"A primavera é a estação do ano de renovação, caracterizada por temperaturas amenas, dias mais longos e aumento da umidade do ar",
-		"next_season" : 'season_2',
+		"next_season" : 'season_1',
 		"icon": preload("res://Art/Icons/sword.png"),
 		"spawn_rate": {
 			"flowers": "abundant",
@@ -31,10 +24,11 @@ var seasons : Dictionary = {
 			"animals": "abundant"
 		}
 	},
-	"season_2" :{
-		"name":"Verão",
+	"season_1" :{
+		"name": "Verão",
+		"short_name":"VER",
 		"description":"O verão é uma estação caracterizada pelo calor, dias mais longos do que as noites e aumento das chuvas, especialmente chuvas fortes e rápidas de fim de tarde",
-		"next_season" : 'season_3',
+		"next_season" : 'season_2',
 		"icon": preload("res://Art/Icons/sword.png"),
 		"spawn_rate": {
 			"flowers": "normal",
@@ -44,10 +38,11 @@ var seasons : Dictionary = {
 			"animals": "common"
 		}
 	},
-	"season_3" :{
-		"name":"Outono",
+	"season_2" :{
+		"name": "Outono",
+		"short_name":"OUT",
 		"description":"O outono caracteriza-se pela transição do verão para o inverno, com a gradual diminuição da intensidade da luz solar, que leva ao encurtamento dos dias e alongamento das noites.",
-		"next_season" : 'season_4',
+		"next_season" : 'season_3',
 		"icon": preload("res://Art/Icons/sword.png"),
 		"spawn_rate": {
 			"flowers": "rare",
@@ -57,10 +52,11 @@ var seasons : Dictionary = {
 			"animals": "normal"
 		}
 	},
-	"season_4" :{
-		"name":"Inverno",
+	"season_3" :{
+		"name": "Outono",
+		"short_name":"INV",
 		"description":"O inverno é a estação mais fria do ano, caracterizada por temperaturas baixas, dias mais curtos e noites mais longas devido à inclinação do eixo terrestre",
-		"next_season" : 'season_1',
+		"next_season" : 'Primavera',
 		"icon": preload("res://Art/Icons/sword.png"),
 		"spawn_rate": {
 			"flowers": "none",
@@ -73,26 +69,33 @@ var seasons : Dictionary = {
 }
 
 var week_days : Dictionary = {
+	"week_day_0" : {
+		"name" : "Domingo",
+		 "short_name" : "DOM"
+	},
 	"week_day_1" : {
-		 "name" : "Domingo"
+		 "name" : "Segunda-feira",
+		 "short_name" : "SEG"
 	},
 	"week_day_2" : {
-		 "name" : "Segunda-feira"
+		 "name" : "Terça-feira",
+		 "short_name" : "TER"
 	},
 	"week_day_3" : {
-		 "name" : "Terça-feira"
+		 "name" : "Quarta-feira",
+		 "short_name" : "QUA"
 	},
 	"week_day_4" : {
-		 "name" : "Quarta-feira"
+		 "name" : "Quinta-feira",
+		 "short_name" : "QUI"
 	},
 	"week_day_5" : {
-		 "name" : "Quinta-feira"
+		 "name" : "Sexta-feira",
+		 "short_name" : "SEX"
 	},
 	"week_day_6" : {
-		 "name" : "Sexta-feira"
-	},
-	"week_day_7" : {
-		 "name" : "Sábado"
+		 "name" : "Sábado",
+		 "short_name" : "SÁB"
 	}
 	
 	

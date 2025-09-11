@@ -1,27 +1,27 @@
 [gd_scene load_steps=57 format=3 uid="uid://0uy77r75f33t"]
 
-[ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://tgsy325q5sw8" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/Player/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://e32e1hn0u3wd" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
-[ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
-[ext_resource type="Texture2D" uid="uid://bqikru26egmx0" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://dp0btqctptkqu" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://bgdkan0sehr5j" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
+[ext_resource type="Texture2D" uid="uid://dhags07ahrjuq" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
 [ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/UI/progress_bar.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://bgsvx2ksa7w37" path="res://Art/Sprites/2 Standart/1 Character/D_Run.png" id="6_igrcy"]
+[ext_resource type="Texture2D" uid="uid://cy7mg1wcbp88g" path="res://Art/Sprites/2 Standart/1 Character/D_Run.png" id="6_igrcy"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="6_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://bl8g1evvnr17v" path="res://Art/Sprites/2 Standart/1 Character/S_Attack.png" id="7_olqyp"]
-[ext_resource type="Texture2D" uid="uid://bpbj3choywi2v" path="res://Art/Sprites/2 Standart/1 Character/S_Idle.png" id="8_wpjfl"]
-[ext_resource type="Texture2D" uid="uid://dbin6e8j18cuc" path="res://Art/Sprites/2 Standart/1 Character/S_Run.png" id="9_bi64h"]
+[ext_resource type="Texture2D" uid="uid://dlaxxgn6n7176" path="res://Art/Sprites/2 Standart/1 Character/S_Attack.png" id="7_olqyp"]
+[ext_resource type="Texture2D" uid="uid://ntvafd5trkcj" path="res://Art/Sprites/2 Standart/1 Character/S_Idle.png" id="8_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://csp40wcjo7uu6" path="res://Art/Sprites/2 Standart/1 Character/S_Run.png" id="9_bi64h"]
 [ext_resource type="Script" uid="uid://baet3vku6dou8" path="res://Scripts/Components/progression_component.gd" id="9_f1ek2"]
-[ext_resource type="Texture2D" uid="uid://c0nyxppqnqae0" path="res://Art/Sprites/2 Standart/1 Character/U_Attack.png" id="10_2ijsl"]
-[ext_resource type="Texture2D" uid="uid://d2cvxle35kilr" path="res://Art/Sprites/2 Standart/1 Character/U_Idle.png" id="11_p1odr"]
+[ext_resource type="Texture2D" uid="uid://bxuedqe5cbq5v" path="res://Art/Sprites/2 Standart/1 Character/U_Attack.png" id="10_2ijsl"]
+[ext_resource type="Texture2D" uid="uid://bxdldbojceiwk" path="res://Art/Sprites/2 Standart/1 Character/U_Idle.png" id="11_p1odr"]
 [ext_resource type="Script" uid="uid://dnjb32a4h35mu" path="res://Scripts/StateMachine/state_machine.gd" id="11_pu2lt"]
-[ext_resource type="Texture2D" uid="uid://d0ysr6nosspfx" path="res://Art/Sprites/2 Standart/1 Character/U_Run.png" id="12_wpjfl"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_walk.gd" id="13_7dp3o"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_idle.gd" id="13_fd4e3"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_attack.gd" id="14_h4iuc"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_dead.gd" id="16_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://dxegd2uoy4nko" path="res://Art/Sprites/2 Standart/1 Character/U_Run.png" id="12_wpjfl"]
+[ext_resource type="Script" uid="uid://br1hin6b1coeu" path="res://Scripts/StateMachine/Player/player_walk.gd" id="13_7dp3o"]
+[ext_resource type="Script" uid="uid://bjdx3waxhxdc3" path="res://Scripts/StateMachine/Player/player_idle.gd" id="13_fd4e3"]
+[ext_resource type="Script" uid="uid://bhfxpb417a3v8" path="res://Scripts/StateMachine/Player/player_attack.gd" id="14_h4iuc"]
+[ext_resource type="Script" uid="uid://mldrx28smy8b" path="res://Scripts/StateMachine/Player/player_dead.gd" id="16_fd4e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
 atlas = ExtResource("2_h4iuc")
@@ -320,7 +320,6 @@ shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
-anchors_preset = -1
 offset_left = -23.0
 offset_top = -34.0
 offset_right = 21.0
