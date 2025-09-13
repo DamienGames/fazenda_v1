@@ -10,7 +10,6 @@ extends Node
 @onready var year_label: Label = $CanvasLayer/ClockUI/TextureRect/YearLabel
 
 @export var current_scene: Node = null	
-@export var calendar: CalendarComponent
 @export_file("*.tscn") var initial_scene_path: String
 
 func _ready() -> void:
@@ -57,15 +56,6 @@ func _on_save_pressed() -> void:
 	
 func _on_load_pressed() -> void:
 	load_game(1)
-#
-#func _on_calendar_component_minute_tick(time: Variant) -> void:
-	#time_label.text = str(time)
-#
-#func _on_calendar_component_day_change(day: int) -> void:
-	#day_label.text = str(day)
-#
-#func _on_calendar_component_season_change(season: Dictionary) -> void:
-	#season_label.text = season["short_name"]
-#
-#func _on_calendar_component_week_change(week_day: Dictionary) -> void:
-	#week_day_label.text = week_day["short_name"]
+
+func _on_calendar_component_minute_tick(time: String) -> void:
+	time_label.text = str(time)
