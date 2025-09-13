@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://byey2nx6trh4i" path="res://UI/arial.ttf" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://cm2d3ype7cy2c" path="res://UI/godoto.fnt" id="5_6bp64"]
 [ext_resource type="Texture2D" uid="uid://rpfvj00qcqac" path="res://Art/Sprites/display_relogio.png" id="7_6bp64"]
-[ext_resource type="Script" uid="uid://b6tankeae3a16" path="res://Scripts/Globals/day_night_cicle.gd" id="7_344ge"]
+[ext_resource type="Script" uid="uid://b6tankeae3a16" path="res://Scenes/day_nigh_cicle.gd" id="7_344ge"]
 
 [sub_resource type="FontVariation" id="FontVariation_jjvhh"]
 base_font = ExtResource("4_jjvhh")
@@ -38,6 +38,7 @@ scale = Vector2(1.01714, 1)
 size_flags_horizontal = 8
 
 [node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 follow_viewport_scale = 0.001
 
 [node name="save" type="Button" parent="DEBUGOPTIONS"]
@@ -54,22 +55,10 @@ offset_right = 140.0
 offset_bottom = 46.0
 text = " LOAD"
 
-[node name="pause timer" type="Button" parent="DEBUGOPTIONS"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -27.5
-offset_right = 27.5
-offset_bottom = 31.0
-grow_horizontal = 2
-text = "pause
-"
-
-[node name="unpause" type="Button" parent="DEBUGOPTIONS"]
+[node name="scene2" type="Button" parent="DEBUGOPTIONS"]
 offset_right = 8.0
 offset_bottom = 8.0
-text = "unpause
-"
+text = "CENA 2"
 
 [node name="DEBUG" type="CanvasLayer" parent="."]
 visible = false
@@ -107,10 +96,10 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -109.0
-offset_top = 14.0
-offset_right = -109.0
-offset_bottom = 14.0
+offset_left = -56.0
+offset_top = 17.0
+offset_right = -56.0
+offset_bottom = 17.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 
@@ -184,10 +173,8 @@ scene_container = NodePath("../SceneContainer")
 metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 
 [node name="DayNighCicle" type="CanvasModulate" parent="."]
-color = Color(0.997727, 0.921274, 0.887134, 0.992157)
 script = ExtResource("7_344ge")
 
 [connection signal="pressed" from="DEBUGOPTIONS/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="DEBUGOPTIONS/load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="DEBUGOPTIONS/pause timer" to="." method="_on_pause_timer_pressed"]
-[connection signal="pressed" from="DEBUGOPTIONS/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="DEBUGOPTIONS/scene2" to="." method="_on_scene_2_pressed"]

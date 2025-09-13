@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://0uy77r75f33t"]
+[gd_scene load_steps=56 format=3 uid="uid://0uy77r75f33t"]
 
 [ext_resource type="Texture2D" uid="uid://tgsy325q5sw8" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/Player/player.gd" id="1_vgqql"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dp0btqctptkqu" path="res://Art/Sprites/2 Standart/1 Character/D_Attack.png" id="2_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://bgdkan0sehr5j" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_8erm5"]
 [ext_resource type="Texture2D" uid="uid://dhags07ahrjuq" path="res://Art/Sprites/2 Standart/1 Character/D_Hurt.png" id="4_f1ek2"]
-[ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/UI/progress_bar.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cy7mg1wcbp88g" path="res://Art/Sprites/2 Standart/1 Character/D_Run.png" id="6_igrcy"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="6_x3wgy"]
@@ -306,6 +305,7 @@ collision_mask = 7234
 script = ExtResource("1_vgqql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
@@ -325,7 +325,6 @@ offset_top = -34.0
 offset_right = 21.0
 offset_bottom = -7.0
 value = 100.0
-script = ExtResource("4_fkybt")
 
 [node name="StateLabel" type="Label" parent="ProgressBar"]
 layout_mode = 0

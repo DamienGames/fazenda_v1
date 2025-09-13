@@ -4,10 +4,7 @@ extends Node
 @onready var scene_component: SceneComponent = $SceneComponent
 @onready var scene_container: Control = $SceneContainer
 @onready var time_label: Label = $CanvasLayer/ClockUI/TextureRect/TimeLabel
-@onready var season_label: Label = $CanvasLayer/ClockUI/TextureRect/SeasonLabel
-@onready var week_day_label: Label = $CanvasLayer/ClockUI/TextureRect/WeekDayLabel
-@onready var day_label: Label = $CanvasLayer/ClockUI/TextureRect/DayLabel
-@onready var year_label: Label = $CanvasLayer/ClockUI/TextureRect/YearLabel
+@onready var day_nigh_cicle: CanvasModulate = $DayNighCicle
 
 @export var current_scene: Node = null	
 @export_file("*.tscn") var initial_scene_path: String
@@ -15,7 +12,6 @@ extends Node
 func _ready() -> void:
 	save_load = SaveLoadComponent.new()
 	change_scene(initial_scene_path)
-	#calendar.change_next_season("Primavera")
 
 func change_scene(path: String) -> void:
 	if current_scene:
@@ -57,5 +53,13 @@ func _on_save_pressed() -> void:
 func _on_load_pressed() -> void:
 	load_game(1)
 
-func _on_calendar_component_minute_tick(time: String) -> void:
+func _on_calendar_component_minute_tick(time: String, total_minutes : int) -> void:
 	time_label.text = str(time)
+
+
+func _on_pause_timer_pressed() -> void:
+	CalendarGlobal.set_timer_pause(true)
+
+
+func _on_unpause_pressed() -> void:
+	CalendarGlobal.set_timer_pause(false)

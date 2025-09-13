@@ -184,7 +184,6 @@ scene_container = NodePath("../SceneContainer")
 metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 
 [node name="DayNighCicle" type="CanvasModulate" parent="."]
-color = Color(0.997727, 0.921274, 0.887134, 0.992157)
 script = ExtResource("7_344ge")
 
 [connection signal="pressed" from="DEBUGOPTIONS/save" to="." method="_on_save_pressed"]

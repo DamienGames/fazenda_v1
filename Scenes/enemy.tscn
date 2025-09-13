@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bgdkan0sehr5j" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="2_auwsv"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="3_287tu"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="4_0830c"]
-[ext_resource type="Script" uid="uid://dua4ipewinj8f" path="res://Scripts/UI/progress_bar.gd" id="6_ghaa6"]
 [ext_resource type="Script" uid="uid://kgqp2ogketdo" path="res://Scripts/Components/detection_componente.gd" id="7_1dp5w"]
 [ext_resource type="Script" uid="uid://dnjb32a4h35mu" path="res://Scripts/StateMachine/state_machine.gd" id="9_8uf12"]
 [ext_resource type="Script" uid="uid://diq5xguhper2y" path="res://Scripts/StateMachine/Enemies/enemy_idle.gd" id="10_haro7"]
@@ -60,6 +59,18 @@ height = 10.0
 radius = 6.67815
 height = 13.3563
 
+[sub_resource type="GDScript" id="GDScript_ta2yt"]
+script/source = "extends ProgressBar
+
+func _on_health_component_health_changed(current: int, max: int) -> void:
+	max_value = max
+	value = current
+
+
+func _on_health_component_healed(amount: int) -> void:
+	value += amount
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 37.2156
 
@@ -112,7 +123,7 @@ debug_color = Color(0.824288, 0.115722, 0.272508, 0.419608)
 offset_right = 4.0
 offset_bottom = 27.0
 value = 100.0
-script = ExtResource("6_ghaa6")
+script = SubResource("GDScript_ta2yt")
 
 [node name="DetectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("detection_area", "raycast")]
 script = ExtResource("7_1dp5w")

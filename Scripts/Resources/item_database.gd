@@ -10,6 +10,7 @@ var items: Dictionary = {
 		"icon": preload("res://Art/Icons/sword.png"),
 		"gold_cost": 100,
 		"durability": 100,
+		"weight" : 10.0,
 		"effects":
 			[ 
 				{
@@ -17,14 +18,14 @@ var items: Dictionary = {
 					"target" : EffectDataBase.Target.HP,
 					"type" : EffectDataBase.Type.DAMAGE,
 					"target_group" : EffectDataBase.TargetGroup.HOSTILE,
-					"amount": 30
+					"damage": "30|50"					
 				},
 				{
 					"name" : "Ataque venenoso",
 					"target" : EffectDataBase.Target.HP,
 					"type" : EffectDataBase.Type.DEBUFF,
 					"target_group" : EffectDataBase.TargetGroup.HOSTILE,
-					"amount": 10,
+					"damage": "10|10",
 					"debuff":{
 						"type" : EffectDataBase.DebuffType.POISON,
 						"duration" : "5"
