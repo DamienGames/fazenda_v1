@@ -63,8 +63,7 @@ func _process(delta: float) -> void:
 			print(get_formatted_time(daily_game_minutes))
 			
 		end_day()
-
-
+		
 func end_day(force: bool = false) -> void:
 	# Se chegou no horário final OU o encerramento foi forçado
 	if daily_game_minutes + SLEEP_TIME >= END_TIME or force:
