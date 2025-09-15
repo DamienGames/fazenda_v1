@@ -1,9 +1,7 @@
 extends Resource
 class_name CalendarDatabase
 
-func get_next_season(season_name:String):
-		if seasons.has(season_name):
-			print(season_name)
+func get_next_season(season_name:String):		
 		var current_season = seasons.get(season_name)	
 		if current_season:
 			var next_season = seasons.get(current_season["next_season"])	 

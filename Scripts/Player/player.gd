@@ -1,6 +1,5 @@
 extends CharacterBody2D
-const SPEED = 100.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 60.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
@@ -10,6 +9,7 @@ const JUMP_VELOCITY = -400.0
 var input_vector: Vector2 = Vector2.ZERO
 var current_state : String
 var facing_direction: Vector2 = Vector2.DOWN 
+var tilemap: TileMapLayer
 
 signal pick_up
 
@@ -19,6 +19,11 @@ func _ready() -> void:
 	state_machine.add_state("walk", PlayerWalk.new())
 	state_machine.add_state("attack", PlayerAttack.new())
 	state_machine.add_state("dead", PlayerDead.new())
+	state_machine.add_state("mine", PlayerMine.new())
+	
+	#tilemap = get_parent().get_node("Tiles").get_node("Floor")
+	tilemap = get_tree().get_first_node_in_group("floor")
+
 	pick_up.emit("item_001", 10)
 	# Começa em idle
 	state_machine.change_state("idle")
@@ -31,16 +36,21 @@ func _physics_process(delta: float) -> void:
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
-	if input_vector.length() > 1:
-		input_vector = input_vector.normalized()
+	if input_vector != Vector2.ZERO:
+		facing_direction = input_vector
+		velocity = facing_direction * SPEED
+	else:
+		velocity = Vector2.ZERO
 		
 	velocity = input_vector * SPEED
 	move_and_slide()
+	
 
 func _load_state(data: Dictionary) -> void:
 	if data.has("position"):
 		global_position = data["position"]	
 		
+
 func _on_health_component_health_changed(current: int, max: int) -> void:
 	if progress_bar:
 		progress_bar.value = current

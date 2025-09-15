@@ -34,7 +34,7 @@ var daily_game_minutes: int = START_TIME  # reinicia a cada dia
 var start_real_time: float
 var timer_is_paused: bool = false
 
-var current_day: int 
+var current_day: int = 1
 var current_week_day: Dictionary = {}
 var current_season: Dictionary = {}
 var current_week_day_index: int
@@ -60,7 +60,6 @@ func _process(delta: float) -> void:
 
 		if minute % 10 == 0:
 			minute_tick.emit(get_formatted_time(daily_game_minutes), daily_game_minutes)
-			print(get_formatted_time(daily_game_minutes))
 			
 		end_day()
 		
@@ -71,6 +70,7 @@ func end_day(force: bool = false) -> void:
 		daily_game_minutes = START_TIME
 		total_game_minutes += (START_TIME - daily_game_minutes)
 		start_real_time = Time.get_ticks_msec() / 1000.0
+		current_day += 1
 		day_change.emit(current_day)
 		timer_is_paused = true
 		await get_tree().create_timer(2).timeout

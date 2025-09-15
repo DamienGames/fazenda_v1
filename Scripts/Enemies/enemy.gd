@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hurtbox_component_hurt(damage: int, from: Node) -> void:
-	print("hurt")
 	pass # Replace with function body.
 
 func _on_health_component_died() -> void:

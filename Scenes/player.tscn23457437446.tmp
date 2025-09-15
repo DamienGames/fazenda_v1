@@ -19,12 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://d2cvxle35kilr" path="res://Art/Sprites/2 Standart/1 Character/U_Idle.png" id="11_p1odr"]
 [ext_resource type="Script" uid="uid://dnjb32a4h35mu" path="res://Scripts/StateMachine/state_machine.gd" id="11_pu2lt"]
 [ext_resource type="Texture2D" uid="uid://d0ysr6nosspfx" path="res://Art/Sprites/2 Standart/1 Character/U_Run.png" id="12_wpjfl"]
-[ext_resource type="Script" uid="uid://br1hin6b1coeu" path="res://Scripts/StateMachine/Player/player_walk.gd" id="13_7dp3o"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_walk.gd" id="13_7dp3o"]
 [ext_resource type="Script" uid="uid://bjdx3waxhxdc3" path="res://Scripts/StateMachine/Player/player_idle.gd" id="13_fd4e3"]
 [ext_resource type="Texture2D" uid="uid://j7jpm2w01ec3" path="res://Art/Sprites/2 Standart/1 Character/U_Mine.png" id="14_0gysh"]
-[ext_resource type="Script" uid="uid://bhfxpb417a3v8" path="res://Scripts/StateMachine/Player/player_attack.gd" id="14_h4iuc"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_attack.gd" id="14_h4iuc"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_dead.gd" id="16_fd4e3"]
-[ext_resource type="Script" uid="uid://ddrg5s5jppb8a" path="res://Scripts/StateMachine/Player/player_mine.gd" id="25_p1odr"]
+[ext_resource type="Script" uid="uid://ddrg5s5jppb8a" path="res://Scripts/player_mine.gd" id="25_p1odr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
 atlas = ExtResource("2_h4iuc")
@@ -391,7 +391,7 @@ zoom = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"s_mine"
+animation = &"u_mine"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.00899023, 3.64062)
@@ -475,8 +475,6 @@ collision_mask = 576
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(5.52246, 5.15777)
 shape = SubResource("CircleShape2D_wpjfl")
-
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="hurt" from="HurtboxComponent" to="." method="_on_hurtbox_component_hurt"]
