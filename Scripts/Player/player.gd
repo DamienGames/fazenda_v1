@@ -10,6 +10,7 @@ var input_vector: Vector2 = Vector2.ZERO
 var current_state : String
 var facing_direction: Vector2 = Vector2.DOWN 
 var tilemap: TileMapLayer
+var tilemap_componente : TileMapComponent
 
 signal pick_up
 
@@ -21,9 +22,8 @@ func _ready() -> void:
 	state_machine.add_state("dead", PlayerDead.new())
 	state_machine.add_state("mine", PlayerMine.new())
 	
-	#tilemap = get_parent().get_node("Tiles").get_node("Floor")
 	tilemap = get_tree().get_first_node_in_group("floor")
-
+	tilemap_componente = get_parent().get_node("TileMapComponent")
 	pick_up.emit("item_001", 10)
 	# Começa em idle
 	state_machine.change_state("idle")

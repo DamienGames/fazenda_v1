@@ -2,6 +2,12 @@
 extends  Node
 class_name HealthComponent
 
+#SIGNALS DE MUDANCA DO HP
+signal health_changed(current: int, max: int)
+signal died
+signal damaged(amount: int)
+signal healed(amount: int)
+
 #EXPORT VARS
 #LIMITE MAXIMO DE HP
 @export var max_health: int = 100:
@@ -17,13 +23,6 @@ class_name HealthComponent
 		emit_signal("health_changed", current_health, max_health)
 		if current_health == 0:
 			emit_signal("died")
-
-
-#SIGNALS DE MUDANCA DO HP
-signal health_changed(current: int, max: int)
-signal died
-signal damaged(amount: int)
-signal healed(amount: int)
 
 #INICIO DA CLASSE COM VALORES BASE
 func _ready() -> void:

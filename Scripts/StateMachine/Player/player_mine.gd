@@ -17,24 +17,24 @@ func enter(_player: Node, _data := {}) -> void:
 	if Input.is_action_just_pressed("dig"): 
 		if _player.tilemap == null:
 			return
-		var pos = _player.global_position
-		var current_cell = _player.tilemap.local_to_map(_player.tilemap.to_local(pos))		
-		var target_cell = current_cell + Vector2i(_player.facing_direction)
-		
 		if abs(_player.facing_direction.x) > abs(_player.facing_direction.y):
 			_player.animated_sprite_2d.play("s_mine")
 			_player.animated_sprite_2d.flip_h = _player.facing_direction.x < 0		
 		else:
 			if _player.facing_direction.y > 0:
-				_player.animated_sprite_2d.play("d_ine")
+				_player.animated_sprite_2d.play("d_mine")
 			else:
 				_player.animated_sprite_2d.play("u_mine")
 				
 		await _player.animated_sprite_2d.animation_finished
 		timer.start(mine_duration)
+		
+		var pos = _player.global_position
+		var current_cell = _player.tilemap.local_to_map(_player.tilemap.to_local(pos))		
+		var target_cell = current_cell + Vector2i(_player.facing_direction)
 		var current_tile = _player.tilemap.get_cell_source_id(target_cell)
-		if current_tile == 1:
-			_player.tilemap.set_cell(target_cell, 0, Vector2i(1,0)) 
+	#_player.tilemap_componente.limpar_tile("floor", target_cell)
+		_player.tilemap_componente.colocar_tile("floor", target_cell, 1, Vector2i(10,9)) 
 			
 func update(_player: Node, delta: float) -> void:
 	if _player.input_vector != Vector2.ZERO:
