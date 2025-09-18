@@ -2,7 +2,12 @@ extends CharacterBody2D
 const SPEED = 60.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine: StateMachine = $StateMachine
+
+# state machine
+@onready var moviment_state_machine: MovimentStateMachine = $MovimentStateMachine
+@onready var action_state_machine: ActionStateMachine = $ActionStateMachine
+
+# componentes
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
@@ -16,22 +21,21 @@ signal pick_up
 
 func _ready() -> void:	
 	 # Registrar estados
-	state_machine.add_state("idle", PlayerIdle.new())
-	state_machine.add_state("walk", PlayerWalk.new())
-	state_machine.add_state("attack", PlayerAttack.new())
-	state_machine.add_state("dead", PlayerDead.new())
-	state_machine.add_state("mine", PlayerMine.new())
+	moviment_state_machine.add_state("idle", PlayerIdle.new())
+	moviment_state_machine.add_state("walk", PlayerWalk.new())
+	
+	action_state_machine.add_state("attack", PlayerAttack.new())
+	action_state_machine.add_state("dead", PlayerDead.new())
+	action_state_machine.add_state("mine", PlayerMine.new())
 	
 	tilemap = get_tree().get_first_node_in_group("floor")
-	tilemap_componente = get_parent().get_node("TileMapComponent")
+	if get_parent().has_node("TileMapComponent"):
+		tilemap_componente = get_parent().get_node("TileMapComponent")
 	pick_up.emit("item_001", 10)
 	# Começa em idle
-	state_machine.change_state("idle")
+	moviment_state_machine.change_state("idle")
 
-func _process(delta: float) -> void:
-	state_machine.update(delta)
-
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	# Movimentação básica
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -45,6 +49,15 @@ func _physics_process(delta: float) -> void:
 	velocity = input_vector * SPEED
 	move_and_slide()
 	
+	moviment_state_machine.update(delta)
+	
+	if Input.is_action_just_pressed("attack"):
+		action_state_machine.change_state("attack", { "last_dir": facing_direction })
+		
+	if Input.is_action_just_pressed("dig"):
+		action_state_machine.change_state("mine", { "last_dir": facing_direction })
+	
+	action_state_machine.update(delta)	
 
 func _load_state(data: Dictionary) -> void:
 	if data.has("position"):

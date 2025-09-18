@@ -4,10 +4,12 @@ extends Node2D
 
 func _ready() -> void:
 	SaveGlobal.on_scene_ready()
-	await get_tree().create_timer(2.0).timeout
 	TileMapComponent.new()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	var scene_component = get_tree().root.get_node_or_null("Main/SceneComponent")
-	if scene_component:
-		scene_component.change_scene("res://Scenes/Fases/Casa/casa_interior.tscn")
+	if 	body.is_in_group("player"):
+		var daynight = get_tree().root.get_node_or_null("Main/DayNightCicle")
+		daynight.visible = false
+		var scene_component = get_tree().root.get_node_or_null("Main/SceneComponent")
+		if scene_component:
+			scene_component.change_scene("res://Scenes/Fases/Casa/casa_interior.tscn")

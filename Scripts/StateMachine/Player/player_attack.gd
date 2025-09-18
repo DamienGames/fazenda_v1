@@ -1,5 +1,4 @@
-extends State
-class_name PlayerAttack
+class_name PlayerAttack extends State
 
 @export var attack_duration: float = 0.3
 var timer: Timer
@@ -32,9 +31,14 @@ func enter(_player: Node, _data := {}) -> void:
 	
 	await _player.animated_sprite_2d.animation_finished
 	timer.start(attack_duration)
-	_player.hitbox_component._enable_collision(false);
-	_player.state_machine.change_state("idle")
+	_player.hitbox_component._enable_collision(false)
+	exit(_player)
 
 func _on_attack_finished(_player: Node) -> void:
-	_player.hitbox_component._enable_collision(true)	
-	_player.state_machine.change_state("idle", { "last_dir": _player.facing_direction })
+	_player.hitbox_component._enable_collision(true)
+	_player.moviment_state_machine.change_state("idle", { "last_dir": _player.facing_direction })
+
+
+	
+func exit(_player: Node) -> void:
+	_player.hitbox_component._enable_collision(false);

@@ -55,10 +55,10 @@ scale = Vector2(1.01714, 1)
 size_flags_horizontal = 8
 
 [node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
+layer = 0
 follow_viewport_scale = 0.001
 
 [node name="save" type="Button" parent="DEBUGOPTIONS"]
-anchors_preset = -1
 offset_left = 168.0
 offset_top = 18.0
 offset_right = 215.0
@@ -66,7 +66,6 @@ offset_bottom = 49.0
 text = "SAVE"
 
 [node name="load" type="Button" parent="DEBUGOPTIONS"]
-anchors_preset = -1
 offset_left = 84.0
 offset_top = 15.0
 offset_right = 140.0
@@ -74,7 +73,7 @@ offset_bottom = 46.0
 text = " LOAD"
 
 [node name="pause timer" type="Button" parent="DEBUGOPTIONS"]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -27.5
@@ -85,13 +84,13 @@ text = "pause
 "
 
 [node name="unpause" type="Button" parent="DEBUGOPTIONS"]
-anchors_preset = -1
 offset_right = 8.0
 offset_bottom = 8.0
 text = "unpause
 "
 
 [node name="DEBUG" type="CanvasLayer" parent="."]
+layer = 0
 visible = false
 scale = Vector2(0.15, 0.15)
 transform = Transform2D(0.15, 0, 0, 0.15, 0, 0)
@@ -100,7 +99,7 @@ script = ExtResource("3_jjvhh")
 [node name="Panel" type="Panel" parent="DEBUG"]
 clip_contents = true
 custom_minimum_size = Vector2(500, 500)
-anchors_preset = -1
+anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 500.0
 grow_vertical = 2
@@ -120,10 +119,12 @@ scroll_following = true
 autowrap_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 follow_viewport_scale = 0.001
 
 [node name="ClockUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -70.0
@@ -232,7 +233,8 @@ script = ExtResource("3_8gbba")
 scene_container = NodePath("../SceneContainer")
 metadata/_custom_type_script = "uid://bimbt70uf6mf2"
 
-[node name="DayNighCicle" type="CanvasModulate" parent="."]
+[node name="DayNightCicle" type="CanvasModulate" parent="."]
+visibility_layer = 2
 color = Color(0.9841437, 0.69399965, 0.55103916, 0.8901961)
 script = ExtResource("7_344ge")
 

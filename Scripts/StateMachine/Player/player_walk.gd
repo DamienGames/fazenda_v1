@@ -1,5 +1,4 @@
-extends State
-class_name PlayerWalk
+class_name PlayerWalk extends State
 
 @export var speed: float = 120.0
 var input_vector := Vector2.ZERO
@@ -9,22 +8,15 @@ func enter(_player: Node, _data := {}) -> void:
 	pass
 
 func update(_player: Node, delta: float) -> void:
-	input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
-	
-	if input_vector == Vector2.ZERO:
-		_player.state_machine.change_state("idle", { "last_dir": _player.facing_direction })
+	if _player.input_vector == Vector2.ZERO:
+		_player.moviment_state_machine.change_state("idle", { "last_dir": _player.facing_direction })
 		return
 		
-	_player.facing_direction = input_vector
-
-	if abs(input_vector.x) > abs(input_vector.y):
+	if abs(_player.input_vector.x) > abs(_player.input_vector.y):
 		_player.animated_sprite_2d.play("s_walk")
-		_player.animated_sprite_2d.flip_h = input_vector.x < 0
+		_player.animated_sprite_2d.flip_h = _player.input_vector.x < 0
 	else:
-		if input_vector.y > 0:
+		if _player.input_vector.y > 0:
 			_player.animated_sprite_2d.play("d_walk")
 		else:
 			_player.animated_sprite_2d.play("u_walk")

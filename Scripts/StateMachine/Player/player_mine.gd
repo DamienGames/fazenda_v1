@@ -34,14 +34,7 @@ func enter(_player: Node, _data := {}) -> void:
 		var target_cell = current_cell + Vector2i(_player.facing_direction)
 		var current_tile = _player.tilemap.get_cell_source_id(target_cell)
 	#_player.tilemap_componente.limpar_tile("floor", target_cell)
-		_player.tilemap_componente.colocar_tile("floor", target_cell, 1, Vector2i(10,9)) 
+		_player.tilemap_componente.colocar_tile("floor", target_cell, 1, Vector2i(1,0)) 
 			
-func update(_player: Node, delta: float) -> void:
-	if _player.input_vector != Vector2.ZERO:
-		_player.state_machine.change_state("walk", { "last_dir": _player.facing_direction })
-
-	if Input.is_action_just_pressed("attack"):
-		_player.state_machine.change_state("attack", { "last_dir": _player.facing_direction })
-		
 func _on_mine_finished(_player: Node):
-	_player.state_machine.change_state("idle", { "last_dir": _player.facing_direction })
+	_player.moviment_state_machine.change_state("idle", { "last_dir": _player.facing_direction })

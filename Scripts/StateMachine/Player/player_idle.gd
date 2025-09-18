@@ -1,10 +1,9 @@
-class_name  PlayerIdle
-extends State
+class_name  PlayerIdle extends State
 
 func enter(_player: Node, _data := {}) -> void:
 	super.enter(_player, _data)
 	var direction = _player.facing_direction
-	
+		
 	if abs(direction.x) > abs(direction.y):
 		_player.animated_sprite_2d.play("s_idle")
 		_player.animated_sprite_2d.flip_h = direction.x < 0
@@ -15,11 +14,6 @@ func enter(_player: Node, _data := {}) -> void:
 			_player.animated_sprite_2d.play("u_idle")
 
 func update(_player: Node, delta: float) -> void:
-	if _player.input_vector != Vector2.ZERO:
-		_player.state_machine.change_state("walk", { "last_dir": _player.facing_direction })
-
-	if Input.is_action_just_pressed("attack"):
-		_player.state_machine.change_state("attack", { "last_dir": _player.facing_direction })
-		
-	if Input.is_action_just_pressed("dig"):
-		_player.state_machine.change_state("mine", { "last_dir": _player.facing_direction })
+	var dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	if dir != Vector2.ZERO:
+		_player.moviment_state_machine.change_state("walk", { "last_dir": _player.facing_direction })

@@ -4,8 +4,8 @@
 
 [node name="CasaPrincipal" type="Node2D"]
 
-[node name="PlayerSpaan" type="Marker2D" parent="."]
-position = Vector2(98, 116)
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(36, 60)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

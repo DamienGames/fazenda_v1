@@ -3,8 +3,6 @@ extends Node
 @onready var save_load = SaveLoadComponent
 @onready var scene_component: SceneComponent = $SceneComponent
 @onready var scene_container: Control = $SceneContainer
-@onready var day_nigh_cicle: CanvasModulate = $DayNighCicle
-
 @onready var week_day_label: Label = %WeekDayLabel
 @onready var day_label: Label = %DayLabel
 @onready var time_label: Label = %TimeLabel

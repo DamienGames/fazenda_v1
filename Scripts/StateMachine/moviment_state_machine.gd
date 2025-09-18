@@ -1,6 +1,4 @@
-# StateMachine.gd
-extends Node
-class_name StateMachine
+class_name MovimentStateMachine extends Node
 
 signal state_changed(new_state: String)
 
