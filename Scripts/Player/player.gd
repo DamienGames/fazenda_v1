@@ -17,8 +17,6 @@ var facing_direction: Vector2 = Vector2.DOWN
 var tilemap: TileMapLayer
 var tilemap_componente : TileMapComponent
 
-signal pick_up
-
 func _ready() -> void:	
 	 # Registrar estados
 	moviment_state_machine.add_state("idle", PlayerIdle.new())
@@ -31,8 +29,6 @@ func _ready() -> void:
 	tilemap = get_tree().get_first_node_in_group("floor")
 	if get_parent().has_node("TileMapComponent"):
 		tilemap_componente = get_parent().get_node("TileMapComponent")
-	pick_up.emit("item_001", 10)
-	# Começa em idle
 	moviment_state_machine.change_state("idle")
 
 func _physics_process(delta: float) -> void:

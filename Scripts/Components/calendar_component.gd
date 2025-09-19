@@ -13,7 +13,7 @@ signal year_change(year:int)
 @export var starting_season_index : int = 0
 @export var starting_week_day_index : int = 0
 @export var starting_day : int = 1
-@export var time_scale: float = 50 # 1.6
+@export var time_scale: float = 2 # 1.6
 
 # Configurações do relógio
 const START_TIME: int = 600    # começa às 6h00

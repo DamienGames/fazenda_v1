@@ -2,6 +2,11 @@ class_name ActionStateMachine extends Node
 
 signal state_changed(new_state: String)
 
+@export var initial_state: State = null
+@onready var state: State = (func get_initial_state() -> State:
+	return initial_state if initial_state != null else get_child(0)
+).call()
+
 var states: Dictionary = {}
 var current_state: State
 

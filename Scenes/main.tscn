@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0nqc2rtvhttk"]
+[gd_scene load_steps=16 format=3 uid="uid://d0nqc2rtvhttk"]
 
 [ext_resource type="Script" uid="uid://byb5oq8ear5sv" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://bimbt70uf6mf2" path="res://Scripts/Components/scene_component.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://w3tc0mjmu7oa" path="res://Scripts/UI/debug.gd" id="3_jjvhh"]
 [ext_resource type="FontFile" uid="uid://nm06t5ou2mam" path="res://UI/arial.ttf" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://cj8y2oip1rqlu" path="res://UI/godoto.fnt" id="5_6bp64"]
+[ext_resource type="PackedScene" uid="uid://cbvnbkxxasy0c" path="res://Scenes/inventory_ui.tscn" id="6_344ge"]
 [ext_resource type="Texture2D" uid="uid://dxw3n102jf025" path="res://Art/Sprites/display_relogio.png" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://b6tankeae3a16" path="res://Scripts/Globals/day_night_cicle.gd" id="7_344ge"]
 
@@ -56,6 +57,7 @@ size_flags_horizontal = 8
 
 [node name="DEBUGOPTIONS" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 follow_viewport_scale = 0.001
 
 [node name="save" type="Button" parent="DEBUGOPTIONS"]
@@ -226,6 +228,19 @@ offset_bottom = 76.002396
 scale = Vector2(0.392, 0.392)
 text = "100G"
 label_settings = SubResource("LabelSettings_d1ilt")
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("6_344ge")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 33.0
+offset_right = -60.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="SceneComponent" type="Node2D" parent="."]
 scale = Vector2(5, 5)

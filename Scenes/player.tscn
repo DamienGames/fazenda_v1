@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://0uy77r75f33t"]
+[gd_scene load_steps=71 format=3 uid="uid://0uy77r75f33t"]
 
 [ext_resource type="Texture2D" uid="uid://bjfxmvf765f8v" path="res://Art/Sprites/2 Standart/1 Character/D_Idle.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://dv47r4w6wo1s2" path="res://Scripts/Player/player.gd" id="1_vgqql"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/player_dead.gd" id="16_fd4e3"]
 [ext_resource type="Script" uid="uid://c7mlmh0js2wjx" path="res://Scripts/StateMachine/action_state_machine.gd" id="24_0gysh"]
 [ext_resource type="Script" uid="uid://ddrg5s5jppb8a" path="res://Scripts/StateMachine/Player/player_mine.gd" id="25_p1odr"]
+[ext_resource type="Script" uid="uid://cubot2gnt54tn" path="res://Scripts/Components/inventory_component.gd" id="27_vfarp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
 atlas = ExtResource("2_h4iuc")
@@ -447,6 +448,10 @@ debug_color = Color(0.888972, 0.202783, 0.286536, 0.419608)
 script = ExtResource("9_f1ek2")
 metadata/_custom_type_script = "uid://baet3vku6dou8"
 
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("27_vfarp")
+metadata/_custom_type_script = "uid://cubot2gnt54tn"
+
 [node name="MovimentStateMachine" type="Node" parent="."]
 script = ExtResource("11_pu2lt")
 metadata/_custom_type_script = "uid://dnjb32a4h35mu"
@@ -477,8 +482,6 @@ collision_mask = 576
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(5.52246, 5.15777)
 shape = SubResource("CircleShape2D_wpjfl")
-
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="hurt" from="HurtboxComponent" to="." method="_on_hurtbox_component_hurt"]
