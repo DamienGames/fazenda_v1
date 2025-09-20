@@ -1,5 +1,4 @@
-extends Resource
-class_name EffectDataBase
+class_name EffectDataBase extends Resource
 
 enum Type {
 	HEAL,

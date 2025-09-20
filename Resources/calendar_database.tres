@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CalendarDatabase" load_steps=2 format=3 uid="uid://bqh6scygvj2pq"]
 
-[ext_resource type="Script" uid="uid://caee6yxler245" path="res://Scripts/Resources/calendar_database.gd" id="1_mtvs6"]
+[ext_resource type="Script" uid="uid://caee6yxler245" path="res://Scripts/Globals/calendar_database.gd" id="1_mtvs6"]
 
 [resource]
 script = ExtResource("1_mtvs6")

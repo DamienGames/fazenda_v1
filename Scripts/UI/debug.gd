@@ -56,11 +56,11 @@ func update_debug_info():
 		player_health,
 		current_state,
 		animation,
-		GlobalData.gold,
-		GlobalData.xp,
-		str(GlobalData.quests),
-		str(GlobalData.flags),
-		str(GlobalData.achievements)
+		GameState.current_gold,
+		GameState.current_xp,
+		str(GameState.quests),
+		str(GameState.flags),
+		str(GameState.achievements)
 	]
 
 	label.text = text

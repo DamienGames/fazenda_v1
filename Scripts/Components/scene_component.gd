@@ -47,6 +47,7 @@ func _do_transition(path: String, data: Dictionary) -> void:
 	if data.size() > 0 and _current_scene.has_method("set_data"):
 		_current_scene.set_data(data)
 	emit_signal("scene_changed", _current_scene)
+	GameState.current_scene_path = path
 	_fade(false)	
 	spawn_player(new_scene)
 
@@ -56,6 +57,9 @@ func spawn_player(level: Node):
 		var player = PLAYER.instantiate()
 		player.global_position = spawn.global_position
 		level.add_child(player)
+		 # conectar sinais do player ao inventário/ao HUD
+		#player.player_pick_up.connect($InventoryUI._on_player_pick)
+		#player.health_changed.connect($UI/Hud.on_health_changed)
 
 # Cria camada de fade (preto sobre tudo)
 func _create_fade_layer() -> ColorRect:

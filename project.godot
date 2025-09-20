@@ -17,21 +17,22 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalData="*res://Scripts/Globals/global_data.gd"
-SaveGlobal="*res://Scripts/Components/save_component.gd"
-CalendarGlobal="*res://Scripts/Components/calendar_component.gd"
+GameState="*res://Scripts/Globals/Autoload/game_state.gd"
+Calendar="*res://Scripts/Globals/Autoload/calendar.gd"
+SaveLoad="*res://Scripts/Globals/Autoload/save_load.gd"
+Databases="*res://Scripts/Globals/databases.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/borderless=true
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [global_group]
 
-saveable=""
+savable=""
 
 [gui]
 

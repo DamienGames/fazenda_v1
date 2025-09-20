@@ -6,6 +6,7 @@ class_name InventoryUI
 
 func _ready():
 	refresh_inventory()
+	var player = get_tree().get_nodes_in_group("player")
 
 func refresh_inventory() -> void:
 	var items = inventory.get_all_items()

@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=4 uid="uid://bdoiwlmfyl4p8"]
+[gd_scene load_steps=17 format=4 uid="uid://bdoiwlmfyl4p8"]
 
 [ext_resource type="Script" uid="uid://dqaexo0xvf02u" path="res://Scripts/Fases/scene_1.gd" id="1_u2omm"]
 [ext_resource type="PackedScene" uid="uid://dk3t1o176qtku" path="res://Scenes/enemy.tscn" id="3_kgrdj"]
-[ext_resource type="Resource" uid="uid://clppyjlhd7w4m" path="res://Scripts/Resources/Enemies/Skeleton/Skeleton.tres" id="3_tj6q2"]
+[ext_resource type="Resource" uid="uid://clppyjlhd7w4m" path="res://Resources/Enemies/Skeleton/Skeleton.tres" id="3_tj6q2"]
 [ext_resource type="PackedScene" uid="uid://dt4btq20ik6v7" path="res://Scenes/Fases/Casa/casa_principal.tscn" id="4_f2q1t"]
-[ext_resource type="Texture2D" uid="uid://dcrnol1mfif57" path="res://Art/Sprites/Sprite-0001.png" id="5_tj6q2"]
-[ext_resource type="Texture2D" uid="uid://bwgnfjpttb3ka" path="res://Art/Sprites/2 Standart/5 Tiles/TileSet.png" id="5_ydfgg"]
+[ext_resource type="Texture2D" uid="uid://bo6qcnccj1fa" path="res://Art/Sprites/Sprite-0001.png" id="5_tj6q2"]
+[ext_resource type="Texture2D" uid="uid://swrki3qs30ag" path="res://Art/Sprites/2 Standart/5 Tiles/TileSet.png" id="5_ydfgg"]
 [ext_resource type="Script" uid="uid://cey1y7biwv7dq" path="res://Scripts/Components/tile_map_component.gd" id="7_tj6q2"]
+[ext_resource type="PackedScene" uid="uid://divy31kgmql18" path="res://Scenes/dog.tscn" id="8_kgrdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss1j3"]
 size = Vector2(9.142059, 6.1358337)
@@ -413,5 +414,8 @@ tile_set = SubResource("TileSet_8umo0")
 position = Vector2(334, 129)
 
 [node name="EnemySpawn" type="Marker2D" parent="."]
+
+[node name="Node2D" parent="." instance=ExtResource("8_kgrdj")]
+position = Vector2(355, 119)
 
 [connection signal="body_entered" from="AreaPorta" to="." method="_on_area_2d_body_entered"]

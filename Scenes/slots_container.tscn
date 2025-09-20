@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://ceyx0wcxrc283"]
 
-[ext_resource type="Texture2D" uid="uid://cwfg6m3gy3erl" path="res://Art/Icons/sword.png" id="1_k5gp2"]
+[ext_resource type="Texture2D" uid="uid://ddu0oq7swbm6j" path="res://Art/Icons/sword.png" id="1_k5gp2"]
 [ext_resource type="Script" uid="uid://dw6exlr2ea6sv" path="res://Scripts/UI/inventory_slot.gd" id="1_yxepq"]
-[ext_resource type="Script" uid="uid://c3mshx4hcjvsv" path="res://Scripts/Resources/item_database.gd" id="2_xefrf"]
-[ext_resource type="Texture2D" uid="uid://bjuyhol7ia2o0" path="res://Art/Sprites/slot.png" id="3_1xeq1"]
-[ext_resource type="Texture2D" uid="uid://bc2q6142bmykr" path="res://Art/Sprites/slot_2.png" id="5_1xeq1"]
+[ext_resource type="Script" uid="uid://c3mshx4hcjvsv" path="res://Scripts/Globals/item_database.gd" id="2_xefrf"]
+[ext_resource type="Texture2D" uid="uid://dd70n1qvul35g" path="res://Art/Sprites/slot.png" id="3_1xeq1"]
+[ext_resource type="Texture2D" uid="uid://lfmlr2vysf7f" path="res://Art/Sprites/slot_2.png" id="5_1xeq1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k5gp2"]
 

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 const SPEED = 60.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -10,12 +10,15 @@ const SPEED = 60.0
 # componentes
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
+@onready var inventory_component: InventoryComponent = $InventoryComponent
 
 var input_vector: Vector2 = Vector2.ZERO
 var current_state : String
 var facing_direction: Vector2 = Vector2.DOWN 
 var tilemap: TileMapLayer
 var tilemap_componente : TileMapComponent
+
+signal player_pick_up(item:String, amount:int)
 
 func _ready() -> void:	
 	 # Registrar estados
@@ -30,6 +33,8 @@ func _ready() -> void:
 	if get_parent().has_node("TileMapComponent"):
 		tilemap_componente = get_parent().get_node("TileMapComponent")
 	moviment_state_machine.change_state("idle")
+	
+	player_pick_up.emit("item_001", 2)
 
 func _physics_process(delta: float) -> void:
 	# Movimentação básica
@@ -66,3 +71,19 @@ func _on_health_component_health_changed(current: int, max: int) -> void:
 
 func _on_state_machine_state_changed(new_state: String) -> void:
 	current_state = new_state
+
+
+func get_save_data() -> Dictionary:
+	return {
+		"global_position": global_position,
+		"facing_direction": facing_direction,
+		"inventory_itens": inventory_component.get_all_items()
+	}
+
+func set_save_data(data: Dictionary) -> void:
+	global_position = data.get("global_position", global_position)
+	facing_direction = data.get("facing_direction", facing_direction)
+	var items = data.get("inventory_itens", {})
+	for i in items:
+		inventory_component.add_item(i)
+		

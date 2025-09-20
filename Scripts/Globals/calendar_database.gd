@@ -1,5 +1,4 @@
 extends Resource
-class_name CalendarDatabase
 
 func get_next_season(season_name:String):		
 		var current_season = seasons.get(season_name)	

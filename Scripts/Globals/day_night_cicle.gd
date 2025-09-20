@@ -7,7 +7,7 @@ const COLOR_NIGHT_FALL     = Color("#d277efc0")
 const COLOR_NIGHT     = Color("#4a65a3cb")
 
 func _ready() -> void:
-	CalendarGlobal.minute_tick.connect(Callable(self,"_on_calendar_component_minute_tick" ))
+	Calendar.minute_tick.connect(Callable(self,"_on_calendar_component_minute_tick" ))
 
 func _on_calendar_component_minute_tick(time: String, total_minutes : int):
 	if total_minutes >= 6*100 and total_minutes < 8*100:

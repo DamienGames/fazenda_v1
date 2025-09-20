@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://divy31kgmql18"]
+
+[ext_resource type="Texture2D" uid="uid://c2dfl5q5fgy0k" path="res://Art/Sprites/cachorro.png" id="1_2qs6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n3oh"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7o86"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nue6p"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyi5r"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll7rl"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67jng"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4e2n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n3oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7o86")
+}],
+"loop": true,
+"name": &"d-idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nue6p")
+}],
+"loop": true,
+"name": &"d-sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyi5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll7rl")
+}],
+"loop": true,
+"name": &"s-idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67jng")
+}],
+"loop": true,
+"name": &"s-sit",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrl4p"]
+size = Vector2(7, 5)
+
+[node name="Dog" type="CharacterBody2D"]
+collision_layer = 2048
+collision_mask = 1092
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4e2n8")
+animation = &"d-idle"
+autoplay = "d-idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_lrl4p")

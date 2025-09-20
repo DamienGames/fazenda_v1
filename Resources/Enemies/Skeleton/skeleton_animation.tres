@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=27 format=3 uid="uid://cp1r4qr4thxia"]
 
-[ext_resource type="Texture2D" uid="uid://bfgkg47wslnai" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_ttny1"]
-[ext_resource type="Texture2D" uid="uid://umbpqr6axo8j" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Run.png" id="2_lqndr"]
-[ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_gbsta"]
-[ext_resource type="Texture2D" uid="uid://6c4iixer8pb1" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/S_Idle.png" id="4_mx2fh"]
-[ext_resource type="Texture2D" uid="uid://cvjbvg877bo5a" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/S_Run.png" id="5_u3vye"]
-[ext_resource type="Texture2D" uid="uid://ny33dqrc6gpf" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/U_Idle.png" id="6_wvbre"]
-[ext_resource type="Texture2D" uid="uid://c2a7wm22p3b74" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/U_Run.png" id="7_inog0"]
+[ext_resource type="Texture2D" uid="uid://wqaxyw7aamdm" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_ttny1"]
+[ext_resource type="Texture2D" uid="uid://bsrw10502aja0" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Run.png" id="2_lqndr"]
+[ext_resource type="Texture2D" uid="uid://05jv31qafa0" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="3_gbsta"]
+[ext_resource type="Texture2D" uid="uid://damqfhu585pva" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/S_Idle.png" id="4_mx2fh"]
+[ext_resource type="Texture2D" uid="uid://3rcwv5rrjy6f" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/S_Run.png" id="5_u3vye"]
+[ext_resource type="Texture2D" uid="uid://c1dc6wwk707ln" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/U_Idle.png" id="6_wvbre"]
+[ext_resource type="Texture2D" uid="uid://b13153osycaji" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/U_Run.png" id="7_inog0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
 atlas = ExtResource("1_ttny1")

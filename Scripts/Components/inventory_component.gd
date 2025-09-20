@@ -2,14 +2,14 @@
 extends Node
 class_name InventoryComponent
 
-@export var item_database: ItemDatabase
-@export var effect_database: EffectDataBase
+const ITEM_DATABASE = Databases.ITEM_DATABASE
+const EFFECT_DATABASE = Databases.EFFECT_DATABASE
 
 var items: Array[Dictionary] = [] # [{id:String, quantity:int}]
 
 # --- ADICIONAR ITEM RESPEITANDO STACK ---
 func add_item(id: String, quantity: int = 1) -> void:
-	var item_info = item_database.get_item(id)
+	var item_info = ITEM_DATABASE.get_item(id)
 	if not item_info:
 		return
 
@@ -61,7 +61,7 @@ func use_item(slot_index: int, player: Node) -> void:
 		return
 
 	var slot = items[slot_index]
-	var item_info = item_database.get_item(slot.id)
+	var item_info = ITEM_DATABASE.get_item(slot.id)
 	if not item_info:
 		return
 
@@ -74,24 +74,24 @@ func use_item(slot_index: int, player: Node) -> void:
 
 func _apply_effect(player: Node, effect: Dictionary) -> void:
 	match effect.type:
-		effect_database.Type.HEAL:
+		EFFECT_DATABASE.Type.HEAL:
 			match effect.target:
-				effect_database.Target.HP:
+				EFFECT_DATABASE.Target.HP:
 					player.hp += effect.value
-				effect_database.Target.MP:
+				EFFECT_DATABASE.Target.MP:
 					player.mp += effect.value
-		effect_database.Type.DAMAGE:
+		EFFECT_DATABASE.Type.DAMAGE:
 				player.hp -= effect.value
-		effect_database.Type.BUFF:
+		EFFECT_DATABASE.Type.BUFF:
 			apply_buff(player, effect.target, effect.value, effect.duration)
 
 func apply_buff(player: Node, target: int, value: int, duration: float) -> void:
 	match target:
-		effect_database.Target.ATTACK:
+		EFFECT_DATABASE.Target.ATTACK:
 			player.attack += value
 			await get_tree().create_timer(duration).timeout
 			player.defense -= value
-		effect_database.Target.DEFENSE:
+		EFFECT_DATABASE.Target.DEFENSE:
 			player.defense += value
 			await get_tree().create_timer(duration).timeout
 			player.defense -= value

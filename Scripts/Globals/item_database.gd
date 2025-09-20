@@ -1,9 +1,8 @@
-extends Resource
-class_name ItemDatabase
+class_name ItemDatabase extends Resource
 
 var items: Dictionary = {	
 	"item_0001": {
-		"type": "weapon",
+		"type": "equipment",
 		"name": "Espada de ferro antiga",
 		"description" : "Espada antiga encontrada na floresta",
 		"max_stack": 1,
@@ -57,4 +56,11 @@ func get_item(id: String) -> Dictionary:
 	if items.has(id):
 		return items.get(id)
 	return {}
+	
+func get_items_by_type(type: String) -> Array:
+	var result: Array = []
+	for item in items.values():
+		if item.get("type", "") == type:
+			result.append(item)
+	return result
 	

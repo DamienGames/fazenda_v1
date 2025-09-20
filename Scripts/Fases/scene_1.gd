@@ -3,7 +3,6 @@ extends Node2D
 @onready var tile_map_component: TileMapComponent
 
 func _ready() -> void:
-	SaveGlobal.on_scene_ready()
 	TileMapComponent.new()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dk3t1o176qtku"]
 
 [ext_resource type="Script" uid="uid://0u5xqwun7do8" path="res://Scripts/Enemy/enemy.gd" id="1_0830c"]
-[ext_resource type="SpriteFrames" uid="uid://cp1r4qr4thxia" path="res://Scripts/Resources/Enemies/Skeleton/skeleton_animation.tres" id="2_56vhr"]
+[ext_resource type="SpriteFrames" uid="uid://cp1r4qr4thxia" path="res://Resources/Enemies/Skeleton/skeleton_animation.tres" id="2_56vhr"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_287tu"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="3_287tu"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="4_0830c"]

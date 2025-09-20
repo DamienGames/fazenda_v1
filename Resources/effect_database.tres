@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EffectDataBase" load_steps=2 format=3 uid="uid://blrovllrkwvnr"]
 
-[ext_resource type="Script" uid="uid://7e8girtia1cu" path="res://Scripts/Resources/effects_database.gd" id="1_rf08y"]
+[ext_resource type="Script" uid="uid://7e8girtia1cu" path="res://Scripts/Globals/effects_database.gd" id="1_rf08y"]
 
 [resource]
 script = ExtResource("1_rf08y")
