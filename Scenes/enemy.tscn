@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dk3t1o176qtku"]
+[gd_scene load_steps=18 format=3 uid="uid://dk3t1o176qtku"]
 
-[ext_resource type="Texture2D" uid="uid://bfgkg47wslnai" path="res://Art/Sprites/2 Standart/3 Enemies/2 Skeleton/D_Idle.png" id="1_1f0kj"]
-[ext_resource type="Script" uid="uid://0u5xqwun7do8" path="res://Scripts/Enemies/enemy.gd" id="1_0830c"]
+[ext_resource type="Script" uid="uid://0u5xqwun7do8" path="res://Scripts/Enemy/enemy.gd" id="1_0830c"]
+[ext_resource type="SpriteFrames" uid="uid://cp1r4qr4thxia" path="res://Scripts/Resources/Enemies/Skeleton/skeleton_animation.tres" id="2_56vhr"]
 [ext_resource type="Script" uid="uid://qaseusijo1hs" path="res://Scripts/Components/health_component.gd" id="2_287tu"]
-[ext_resource type="Texture2D" uid="uid://blbyj4del3byj" path="res://Art/Sprites/2 Standart/1 Character/Death.png" id="2_auwsv"]
 [ext_resource type="Script" uid="uid://c0nbllp12uxu5" path="res://Scripts/Components/hitbox_component.gd" id="3_287tu"]
 [ext_resource type="Script" uid="uid://d3od1ryb8hjmm" path="res://Scripts/Components/hurtbox_component.gd" id="4_0830c"]
 [ext_resource type="Script" uid="uid://kgqp2ogketdo" path="res://Scripts/Components/detection_componente.gd" id="7_1dp5w"]
@@ -13,40 +12,6 @@
 [ext_resource type="Script" uid="uid://cqnrxod8erfhv" path="res://Scripts/StateMachine/Enemies/enemy_patrol.gd" id="11_56vhr"]
 [ext_resource type="Script" uid="uid://dwgmtae263mo" path="res://Scripts/StateMachine/Enemies/enemy_dead.gd" id="11_vt4ob"]
 [ext_resource type="Script" uid="uid://dt634e05pu4ax" path="res://Scripts/StateMachine/Enemies/enemy_attack.gd" id="14_hgeoe"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8uf12"]
-atlas = ExtResource("2_auwsv")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
-atlas = ExtResource("1_1f0kj")
-region = Rect2(0, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghaa6"]
-atlas = ExtResource("1_1f0kj")
-region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1dp5w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8uf12")
-}],
-"loop": true,
-"name": &"dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0830c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ghaa6")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghaa6"]
 size = Vector2(5.5329, 5)
@@ -66,7 +31,6 @@ func _on_health_component_health_changed(current: int, max: int) -> void:
 	max_value = max
 	value = current
 
-
 func _on_health_component_healed(amount: int) -> void:
 	value += amount
 "
@@ -81,9 +45,9 @@ slide_on_ceiling = false
 script = ExtResource("1_0830c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_1dp5w")
-animation = &"dead"
-autoplay = "idle"
+sprite_frames = ExtResource("2_56vhr")
+animation = &"u_run"
+autoplay = "d_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.38419e-07, 2)

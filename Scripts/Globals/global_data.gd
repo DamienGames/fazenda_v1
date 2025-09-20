@@ -7,7 +7,7 @@ var gold: int = 0
 var xp: int = 0
 var quests: Dictionary = {}
 var flags: Dictionary = {}
-
+var current_scene: String
 
 func add_coins(amount: int) -> void:
 	coins += amount
@@ -15,13 +15,6 @@ func add_coins(amount: int) -> void:
 func unlock_achievement(id: String) -> void:
 	if not achievements.has(id):
 		achievements.append(id)
-
-
-
-
-
-
-
 
 ### Para salvar
 #func _save_state() -> Dictionary:

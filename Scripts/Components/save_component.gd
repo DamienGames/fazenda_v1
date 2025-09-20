@@ -62,24 +62,6 @@ func apply_current_scene() -> void:
 	
 	var scene_data = save_data["scenes"][current_scene_path]
 	
-	# NPCs
-	for npc in get_tree().get_nodes_in_group("npc"):
-		var id = npc.get_meta("save_id") if npc.has_meta("save_id") else str(npc.get_instance_id())
-		if id in scene_data["npcs"]:
-			var d = scene_data["npcs"][id]
-			npc.position = d.get("position", npc.position)
-			npc.state_machine.change_state(d.get("state", "idle"))
-	
-	# Inimigos
-	for enemy in get_tree().get_nodes_in_group("enemy"):
-		var id = enemy.get_meta("save_id") if enemy.has_meta("save_id") else str(enemy.get_instance_id())
-		if id in scene_data["enemies"]:
-			var d = scene_data["enemies"][id]
-			enemy.position = d.get("position", enemy.position)
-			enemy.is_alive = d.get("alive", true)
-			if not enemy.is_alive:
-				enemy.queue_free()
-	
 	# Objetos
 	for obj in get_tree().get_nodes_in_group("interactive"):
 		var id = obj.get_meta("save_id") if obj.has_meta("save_id") else str(obj.get_instance_id())
@@ -106,7 +88,6 @@ func apply_player(player: Node) -> void:
 		return
 	var p = save_data["player"]
 	#player.health = p.get("health", player.health)
-	print(p.get("position", player.position))
 	player.position = p.get("position", player.position)
 	#player.xp_component.current_xp = p.get("xp", 0)
 	#player.xp_component.level = p.get("level", 1)
@@ -120,14 +101,12 @@ func save_globals() -> void:
 		#"flags": GlobalData.flags
 	}
 
-
 # 🔹 Restaurar Globals
 func apply_globals() -> void:
 	if "globals" in save_data:
 		GlobalData.gold = save_data["globals"].get("gold", 0)
 		#GlobalData.quests = save_data["globals"].get("quests", {})
 		#GlobalData.flags = save_data["globals"].get("flags", {})
-
 
 # 🔹 Trocar de cena mantendo estado
 func change_scene(path: String) -> void:

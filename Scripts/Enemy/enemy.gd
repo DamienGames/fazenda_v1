@@ -2,18 +2,18 @@ extends CharacterBody2D
 
 @onready var detection: DetectionComponent = $DetectionComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var progress_bar: ProgressBar = $ProgressBar
 #@onready var state_machine: StateMachine = $StateMachine
 
-@export var speed := 50
-signal pick_up()
+@export var enemy_data: EnemyData
 
 func _ready() -> void:
+	progress_bar.value = enemy_data.max_health
 	# Registrar estados
 	#state_machine.add_state("idle", EnemyIdle.new())
 	#state_machine.add_state("walk",  EnemyPatrol.new())
 	#state_machine.add_state("attack", EnemyAttack.new())
 	#state_machine.add_state("dead", EnemyDead.new())
-	pick_up.emit()
 
 	# Começa em idle
 	#state_machine.change_state("idle")
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 		if distance > 10: # só persegue se estiver mais longe que 30px
 			var direction = (detection.target.global_position - global_position).normalized()
-			velocity = direction * speed
+			velocity = direction * enemy_data.speed
 		else:
 			velocity = Vector2.ZERO
 	else:
