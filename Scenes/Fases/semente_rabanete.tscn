@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://xcy2n7t4m4mv"]
+
+[ext_resource type="Texture2D" uid="uid://dl424bqie2s6m" path="res://Art/Sprites/semente.png" id="1_jk46n"]
+
+[node name="SementeRabanete" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, -8)
+texture = ExtResource("1_jk46n")
+centered = false
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0.097545624, -0.009616852, 7.9024544, 8.009617)

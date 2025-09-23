@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://divy31kgmql18"]
+[gd_scene load_steps=15 format=3 uid="uid://divy31kgmql18"]
 
 [ext_resource type="Texture2D" uid="uid://c2dfl5q5fgy0k" path="res://Art/Sprites/cachorro.png" id="1_2qs6m"]
+[ext_resource type="Script" uid="uid://qv15f0d4pro2" path="res://Scripts/Player/dog.gd" id="1_uny1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n3oh"]
 atlas = ExtResource("1_2qs6m")
@@ -14,6 +15,14 @@ region = Rect2(8, 8, 8, 8)
 atlas = ExtResource("1_2qs6m")
 region = Rect2(32, 8, 8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uny1q"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1yv2"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(24, 8, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyi5r"]
 atlas = ExtResource("1_2qs6m")
 region = Rect2(0, 0, 8, 8)
@@ -26,6 +35,14 @@ region = Rect2(8, 0, 8, 8)
 atlas = ExtResource("1_2qs6m")
 region = Rect2(32, 0, 8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bno1h"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yb15"]
+atlas = ExtResource("1_2qs6m")
+region = Rect2(24, 0, 8, 8)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4e2n8"]
 animations = [{
 "frames": [{
@@ -36,7 +53,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_w7o86")
 }],
 "loop": true,
-"name": &"d-idle",
+"name": &"d_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -44,7 +61,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_nue6p")
 }],
 "loop": true,
-"name": &"d-sit",
+"name": &"d_sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uny1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1yv2")
+}],
+"loop": true,
+"name": &"d_walk",
 "speed": 5.0
 }, {
 "frames": [{
@@ -55,7 +83,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ll7rl")
 }],
 "loop": true,
-"name": &"s-idle",
+"name": &"s_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -63,22 +91,35 @@ animations = [{
 "texture": SubResource("AtlasTexture_67jng")
 }],
 "loop": true,
-"name": &"s-sit",
+"name": &"s_sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bno1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yb15")
+}],
+"loop": true,
+"name": &"s_walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrl4p"]
-size = Vector2(7, 5)
+size = Vector2(6.9437647, 7.357838)
 
 [node name="Dog" type="CharacterBody2D"]
 collision_layer = 2048
 collision_mask = 1092
+script = ExtResource("1_uny1q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4e2n8")
-animation = &"d-idle"
-autoplay = "d-idle"
+animation = &"s_idle"
+autoplay = "d_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0.40870154, 1.1652851)
+scale = Vector2(1.068497, 0.7820158)
 shape = SubResource("RectangleShape2D_lrl4p")

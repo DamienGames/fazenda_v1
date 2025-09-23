@@ -28,7 +28,8 @@ func _ready() -> void:
 	action_state_machine.add_state("attack", PlayerAttack.new())
 	action_state_machine.add_state("dead", PlayerDead.new())
 	action_state_machine.add_state("mine", PlayerMine.new())
-	
+	action_state_machine.add_state("dig", PlayerDig.new())
+
 	tilemap = get_tree().get_first_node_in_group("floor")
 	if get_parent().has_node("TileMapComponent"):
 		tilemap_componente = get_parent().get_node("TileMapComponent")
@@ -55,8 +56,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		action_state_machine.change_state("attack", { "last_dir": facing_direction })
 		
-	if Input.is_action_just_pressed("dig"):
+	if Input.is_action_just_pressed("mine"):
 		action_state_machine.change_state("mine", { "last_dir": facing_direction })
+	
+	if Input.is_action_just_pressed("dig"):
+		action_state_machine.change_state("dig", { "last_dir": facing_direction })
 	
 	action_state_machine.update(delta)	
 
