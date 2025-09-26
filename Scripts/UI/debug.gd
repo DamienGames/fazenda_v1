@@ -32,8 +32,6 @@ func update_debug_info():
 		current_state = player.current_state		
 		if health_component:
 			player_health = str(health_component.current_health, "/", health_component.max_health)
-		var animate_sprite = player.get_node_or_null("AnimatedSprite2D")
-		animation = animate_sprite.animation
 		player_pos = str(player.global_position)
 
 	var text := """

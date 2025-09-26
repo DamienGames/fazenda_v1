@@ -1,7 +1,10 @@
 class_name Player extends CharacterBody2D
+
 const SPEED = 60.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $Animations/AnimationPlayer
+@onready var animation_tree: AnimationTree = $Animations/AnimationTree
 
 # state machine
 @onready var moviment_state_machine: MovimentStateMachine = $MovimentStateMachine
@@ -21,6 +24,7 @@ var tilemap_componente : TileMapComponent
 signal player_pick_up(item:String, amount:int)
 
 func _ready() -> void:	
+	animation_tree.active = true	
 	 # Registrar estados
 	moviment_state_machine.add_state("idle", PlayerIdle.new())
 	moviment_state_machine.add_state("walk", PlayerWalk.new())
@@ -33,10 +37,13 @@ func _ready() -> void:
 	tilemap = get_tree().get_first_node_in_group("floor")
 	if get_parent().has_node("TileMapComponent"):
 		tilemap_componente = get_parent().get_node("TileMapComponent")
+		
 	moviment_state_machine.change_state("idle")
+	var state_machine  = animation_tree.get("parameters/MovimentSM/playback")
+	state_machine.travel("Idle")
+	animation_tree.active = true;
+	animation_tree.set("parameters/MovimentSM/conditions/is_idle", true)
 	
-	player_pick_up.emit("item_001", 2)
-
 func _physics_process(delta: float) -> void:
 	# Movimentação básica
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -49,10 +56,13 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		
 	velocity = input_vector * SPEED
-	move_and_slide()
+	move_and_slide()	
 	
+	animation_tree.set("parameters/MovimentSM/Idle/blend_position", facing_direction)
+	animation_tree.set("parameters/MovimentSM/Walk/blend_position", input_vector)
+
 	moviment_state_machine.update(delta)
-	
+
 	if Input.is_action_just_pressed("attack"):
 		action_state_machine.change_state("attack", { "last_dir": facing_direction })
 		
@@ -68,7 +78,6 @@ func _load_state(data: Dictionary) -> void:
 	if data.has("position"):
 		global_position = data["position"]	
 		
-
 func _on_health_component_health_changed(current: int, max: int) -> void:
 	if progress_bar:
 		progress_bar.value = current

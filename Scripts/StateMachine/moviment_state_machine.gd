@@ -24,6 +24,6 @@ func change_state(state_name: String, data := {}) -> void:
 func update(delta: float) -> void:
 	if current_state:
 		current_state.update(get_parent(), delta)
-		
+
 func get_current_state():
 	return current_state

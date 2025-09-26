@@ -32,5 +32,5 @@ func _share_group(groups_a: Array, groups_b: Array) -> bool:
 			return true
 	return false
 
-func _enable_collision(collide: bool):
-	collision_shape.disabled = collide;
+#func _enable_collision(collide: bool):
+	#collision_shape.disabled = collide;
